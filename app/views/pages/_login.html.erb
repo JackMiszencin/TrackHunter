@@ -1,0 +1,14 @@
+<%= form_for :params do |f| %>
+	<div class = "control-group">
+		<%= f.label "Please enter your username" %>
+	</div>
+	<div class = "controls">
+		<%= f.text_field :username %>
+	</div>
+	<div class="form-actions">
+		<%= f.submit "Login" do %>
+			<%= link_to new_user_path %>
+		<% end %>
+	</div>
+<% end %>
+<% session[:username] = params[:username] %>
