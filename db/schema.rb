@@ -11,11 +11,54 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328121911) do
+ActiveRecord::Schema.define(:version => 20130402085211) do
+
+  create_table "merchants", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.integer  "current_song_id"
+    t.integer  "previous_song_id"
+  end
 
   create_table "pages", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "like"
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.integer  "merchant_id"
+  end
+
+  add_index "ratings", ["merchant_id"], :name => "index_ratings_on_merchant_id"
+  add_index "ratings", ["song_id"], :name => "index_ratings_on_song_id"
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "username"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "songs", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "artist"
+    t.string   "title"
+    t.string   "album"
   end
 
   create_table "users", :force => true do |t|

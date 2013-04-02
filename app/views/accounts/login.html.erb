@@ -1,0 +1,8 @@
+<h1><%= "Welcome to TrackHunter, " + @current_user[:username] + "!" %></h1>
+<p id="notice"><%= notice %></p>
+<%= form_tag do |f| %>
+	<label>Please enter your username</label>
+	<%= text_field_tag 'username' %>
+	<%= submit_tag 'login' %>
+<% end %>
+<%= link_to "Create Account", new_user_path %>

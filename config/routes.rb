@@ -1,10 +1,21 @@
 TrackHunter::Application.routes.draw do
-  resources :pages
+  resources :merchants
 
+
+  resources :songs
+
+
+  resources :ratings
+
+
+  get "accounts/login"
+
+  get "accounts/logout"
+  post "accounts/login"
 
   resources :users
-  root :to => "pages#home"
-  match 'home' => 'pages#home', :as => 'pages_home'
+  root :to => "accounts#login"
+  match 'home' => 'accounts#login', :as => 'accounts_login'
 
 
   # The priority is based upon order of creation:
