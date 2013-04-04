@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130402092435) do
+ActiveRecord::Schema.define(:version => 20130404231251) do
+
+  create_table "current_songs", :force => true do |t|
+    t.integer "song_id"
+    t.integer "merchant_id"
+  end
+
+  add_index "current_songs", ["merchant_id"], :name => "index_current_songs_on_merchant_id"
+  add_index "current_songs", ["song_id"], :name => "index_current_songs_on_song_id"
 
   create_table "merchants", :force => true do |t|
     t.datetime "created_at",       :null => false
@@ -32,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20130402092435) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "previous_songs", :force => true do |t|
+    t.integer "song_id"
+    t.integer "merchant_id"
+  end
+
+  add_index "previous_songs", ["merchant_id"], :name => "index_previous_songs_on_merchant_id"
+  add_index "previous_songs", ["song_id"], :name => "index_previous_songs_on_song_id"
 
   create_table "ratings", :force => true do |t|
     t.datetime "created_at",  :null => false
@@ -57,11 +73,12 @@ ActiveRecord::Schema.define(:version => 20130402092435) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "songs", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "artist"
     t.string   "title"
     t.string   "album"
+    t.integer  "merchant_ids"
   end
 
   create_table "users", :force => true do |t|
