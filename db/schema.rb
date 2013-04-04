@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130402085211) do
+ActiveRecord::Schema.define(:version => 20130402092435) do
 
   create_table "merchants", :force => true do |t|
     t.datetime "created_at",       :null => false
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(:version => 20130402085211) do
     t.integer  "current_song_id"
     t.integer  "previous_song_id"
   end
+
+  add_index "merchants", ["current_song_id"], :name => "index_merchants_on_current_song_id"
+  add_index "merchants", ["previous_song_id"], :name => "index_merchants_on_previous_song_id"
 
   create_table "pages", :force => true do |t|
     t.datetime "created_at", :null => false
