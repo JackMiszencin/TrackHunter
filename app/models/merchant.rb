@@ -7,5 +7,6 @@ class Merchant < ActiveRecord::Base
 	#has_one :song, through: :current_song
 	belongs_to :previous_song, :class_name => "Song"
 	belongs_to :current_song, :class_name => "Song"
+	has_many :users, :foreign_key => "merchant_id"
 
 end
