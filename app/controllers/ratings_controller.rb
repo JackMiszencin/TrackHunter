@@ -27,17 +27,16 @@ class RatingsController < ApplicationController
     @rating = Rating.new
     @merchant = @current_user.current_merchant
     @song = @merchant.current_song
-    @rating.like = false
 
     if request.post?
       @song.ratings << @rating
       @rating.song = @song
       @merchant.ratings << @rating
       @rating.merchant = @merchant
+      @rating.like = params[:like]
+      @rating.save
       redirect_to @rating
     end
-    
-
   end
 
   # GET /ratings/1/edit
