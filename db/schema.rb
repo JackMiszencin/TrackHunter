@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406054122) do
+ActiveRecord::Schema.define(:version => 20130406223932) do
+
+  create_table "merchant_ratings", :force => true do |t|
+    t.integer "merchant_id"
+    t.integer "rating_id"
+  end
+
+  add_index "merchant_ratings", ["merchant_id"], :name => "index_merchant_ratings_on_merchant_id"
+  add_index "merchant_ratings", ["rating_id"], :name => "index_merchant_ratings_on_rating_id"
 
   create_table "merchants", :force => true do |t|
     t.datetime "created_at",       :null => false
@@ -23,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130406054122) do
     t.integer  "zip_code"
     t.integer  "current_song_id"
     t.integer  "previous_song_id"
+    t.integer  "user_id"
   end
 
   add_index "merchants", ["current_song_id"], :name => "index_merchants_on_current_song_id"
@@ -62,9 +71,8 @@ ActiveRecord::Schema.define(:version => 20130406054122) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "merchant_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<% if @rating.like == true %>
+	<%= hooray! %>
+<% end %>
 
 <%= link_to 'Edit', edit_rating_path(@rating) %> |
 <%= link_to 'Back', ratings_path %>

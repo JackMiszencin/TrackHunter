@@ -1,4 +1,8 @@
+<% unless @current_user.nil? %>
+
 <h1><%= "Welcome to TrackHunter, " + @current_user[:username] + "!" %></h1>
+
+<% end %>
 <p id="notice"><%= notice %></p>
 <%= form_tag do |f| %>
 	<label>Please enter your username</label>

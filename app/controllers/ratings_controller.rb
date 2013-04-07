@@ -25,11 +25,19 @@ class RatingsController < ApplicationController
   # GET /ratings/new.json
   def new
     @rating = Rating.new
+    @merchant = @current_user.current_merchant
+    @song = @merchant.current_song
+    @rating.like = false
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @rating }
+    if request.post?
+      @song.ratings << @rating
+      @rating.song = @song
+      @merchant.ratings << @rating
+      @rating.merchant = @merchant
+      redirect_to @rating
     end
+    
+
   end
 
   # GET /ratings/1/edit

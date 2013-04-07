@@ -17,7 +17,7 @@ TrackHunter::Application.routes.draw do
   root :to => "accounts#login"
   match 'home' => 'accounts#login', :as => 'accounts_login'
 
-
+  post "ratings/new"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
