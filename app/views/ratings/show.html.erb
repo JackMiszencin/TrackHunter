@@ -1,7 +1,16 @@
 <p id="notice"><%= notice %></p>
 <% if @rating.like == true %>
-	<%= "hooray!" %>
+	<h2>GLAD YOU LIKED IT!</h2>
+	<p>We'll let the merchant know you liked the song, so hopefully they'll play more like it in the future. Meanwhile, here's the track info.</p>
+<% else %>
+	<h2>YIKES, THAT'S TOO BAD</h2>
+	<p>We'll let the merchant know you didn't like the track. Hopefully there won't be much more of that going around. Here's the track info.</p>
 <% end %>
+<h3><%= "Title: " + @rating.song.title %></h3>
+<h3><%= "Artist: " + @rating.song.artist %></h3>
+<h3><%= "Album: " + @rating.song.album %></h3>
 
+<div style="margin-left: 30px; margin-bottom: 20px">
 <%= link_to 'Edit', edit_rating_path(@rating) %> |
 <%= link_to 'Back', ratings_path %>
+</div>
