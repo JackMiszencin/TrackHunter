@@ -4,10 +4,14 @@
 
 <% end %>
 <p id="notice"><%= notice %></p>
+<div id = "form_holder">
 <%= form_tag do |f| %>
 	<label>Please enter your username</label>
 	<%= text_field_tag 'username' %>
 	<%= submit_tag 'login' %>
 <% end %>
-<%= link_to "Create Account", new_user_path %>
-<%= link_to "Rate a Song", new_rating_path %>
+</div>
+<div id = "link_holder">
+	<%= link_to "Create Account", new_user_path %>
+	<%= link_to "Rate a Song", new_rating_path %>
+</div>

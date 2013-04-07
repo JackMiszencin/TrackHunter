@@ -76,3 +76,61 @@ div {
   border: 8px #32385a dashed;
   border-radius: 20px;
 }
+#form_holder{
+  margin-top: 0;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  float: top;
+  height: 80px;
+  width: 350px;
+}
+#link_holder{
+  margin-left: 30px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+p {
+  margin-left: 30px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  width: 355px;
+  text-align: justify;
+  font-size: 20px;
+  line-height: 100%
+}
+.box-button{
+  height: 70px;
+  width: 160px;
+  font-family: 'Medula One';
+  font-size: 5em;
+  line-height: 80%;
+  text-align: center;
+  vertical-align: middle;
+  border: 5px solid black;
+  border-radius: 5px;
+  margin-left: 15px;
+  &:hover{
+    cursor: hand;
+    cursor: pointer;
+  }
+}
+h2{
+  text-align: center;
+  margin-left: 0px;
+  font-family: "PT Sans";
+  font-size: 40px;
+  line-height: 100%;
+}
+h3 {
+  text-align: justify;
+  margin-left: 30px;
+  margin-right: 10px;
+  font-family: "PT Sans";
+  font-size: 22px;
+  line-height: 100%;
+}
+h4 {
+  margin-left: 30px;
+  line-height: 70%;
+  font-family: Arial;
+}

@@ -35,6 +35,7 @@ class RatingsController < ApplicationController
       @rating.merchant = @merchant
       @rating.like = params[:like]
       @rating.save
+      @current_user.ratings << @rating
       redirect_to @rating
     end
   end
