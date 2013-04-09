@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    session[:username] = @user.username
+    @user.save
+    session[:user_id] = @user.id
 
     respond_to do |format|
       format.html # new.html.erb
