@@ -25,7 +25,7 @@ class RatingsController < ApplicationController
   # GET /ratings/new.json
   def new
     @rating = Rating.new
-    @merchant = @current_user.current_merchant
+    @merchant = @current_user.merchant
     @song = @merchant.current_song
 
     if request.post?
