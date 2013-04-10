@@ -1,8 +1,3 @@
-<% unless @current_user.nil? %>
-
-<h1><%= "Welcome to TrackHunter, " + @current_user[:username] + "!" %></h1>
-
-<% end %>
 <p id="notice"><%= notice %></p>
 <div id = "form_holder">
 <%= form_tag do |f| %>
@@ -14,4 +9,6 @@
 <div id = "link_holder">
 	<%= link_to "Create Account", new_user_path %>
 	<%= link_to "Rate a Song", new_rating_path %>
-</div>
+</div>  
+
+

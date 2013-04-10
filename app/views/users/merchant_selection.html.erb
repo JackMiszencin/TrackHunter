@@ -1,0 +1,16 @@
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>   
+
+<div class="control-group">
+   <%= f.label "Merchant", :class => 'control-label'%>
+   <div class="controls">
+
+     <%= collection_select(:user, :merchant_id, Merchant.all, :id, :name, options={:prompt => "select a store"}, :class => "store")%>
+   </div>
+ </div> 
+   <div class="form-actions">
+   <%= f.submit nil, :class => 'btn btn-primary' %> 
+
+   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+               new_rating_path, :class => 'btn' %>
+ </div>
+<% end %>   

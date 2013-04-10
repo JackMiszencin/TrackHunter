@@ -1,23 +1,34 @@
 TrackHunter::Application.routes.draw do
   resources :merchants
 
-
   resources :songs
-
 
   resources :ratings
 
-
+  resources :users do
+    get :home
+    get :merchant_selection    
+  end
+  #match "user/home" => "Users#home", :method => "get"
+  
   get "accounts/login"
 
   get "accounts/logout"
-  post "accounts/login"
+  post "accounts/login"  
+  
+  
+  #match 'home' => 'Users#home' 
 
-  resources :users
-  root :to => "accounts#login"
-  match 'home' => 'accounts#login', :as => 'accounts_login'
+  #resources :users
+  #root :to => "accounts#login"
+  #match 'home' => 'accounts#login', :as => 'accounts_login'
 
-  post "ratings/new"
+  #post "ratings/new"   
+  
+   get "music_rating_services/index"
+  
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
