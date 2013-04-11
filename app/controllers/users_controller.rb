@@ -60,7 +60,8 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    if params[:updated_store] 
+    if params[:updated_store]
+        @user.save 
         redirect_to new_rating_path 
     else
     
