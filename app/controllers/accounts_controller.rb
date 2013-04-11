@@ -17,10 +17,12 @@ class AccountsController < ApplicationController
   		else
   			@current_user = User.find_by_username(params[:username])
   			session[:user_id] = @current_user[:id]
-  			redirect_to @current_user 
+  			redirect_to user_home_path(@current_user)  
   		end
   	end
   end
+  
+  
   def logout
   end
   
