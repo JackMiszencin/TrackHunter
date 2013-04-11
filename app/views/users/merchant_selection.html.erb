@@ -3,6 +3,10 @@
    <%= label_tag "merchant", "Please select merchant" %>
    <%= select "merchant", options_from_collection_for_select(@merchants, "id", "name") %>
 
-   <%= submit_tag "Update Store" %> 
+     <%= collection_select(:user, :merchant_id, Merchant.all, :id, :name, options={:prompt => "select a store"}, :class => "merchant")%>
+   </div>
+ </div> 
+   <div class="form-actions">
+   <%= submit_tag "Update Store", :class => "form_submit" , :name => "updated_store" %> 
 
 <% end %>   
