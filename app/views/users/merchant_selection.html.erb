@@ -1,12 +1,14 @@
-<%= form_tag do |f| %>   
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>   
 
-   <%= label_tag "merchant", "Please select merchant" %>
-   <%= select "merchant", options_from_collection_for_select(@merchants, "id", "name") %>
+<div class="control-group">
+	<%=f.label "Merchant", :class => 'control-label' %>
+	<div class="controls">
 
-     <%= collection_select(:user, :merchant_id, Merchant.all, :id, :name, options={:prompt => "select a store"}, :class => "merchant")%>
+    <%= collection_select(:user, :merchant_id, Merchant.all, :id, :name, options={:prompt => "select a store"}, :class => "merchant")%>
    </div>
  </div> 
    <div class="form-actions">
-   <%= submit_tag "Update Store", :class => "form_submit" , :name => "updated_store" %> 
-
+   <%= submit_tag "Update Store", :class => "form_submit", :name => "updated_store" %> 
+   <%= link_to t('.cancel', :default => t("helpers.links.cancel")), new_rating_path, :class => 'btn' %>
+</div>
 <% end %>   
