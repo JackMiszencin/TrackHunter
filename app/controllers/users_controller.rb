@@ -97,5 +97,6 @@ class UsersController < ApplicationController
   
   def merchant_selection  
     @user = @current_user
+    @merchants = Merchant.where(:lng => (@user.lng_low)..(@user.lng_up), :lat => (@user.lat_low)..(@user.lat_up))
   end
 end

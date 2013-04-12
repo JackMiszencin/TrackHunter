@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410150135) do
+ActiveRecord::Schema.define(:version => 20130412075021) do
+
+  create_table "merchant_ratings", :force => true do |t|
+    t.integer "merchant_id"
+    t.integer "rating_id"
+  end
+
+  add_index "merchant_ratings", ["merchant_id"], :name => "index_merchant_ratings_on_merchant_id"
+  add_index "merchant_ratings", ["rating_id"], :name => "index_merchant_ratings_on_rating_id"
 
   create_table "merchants", :force => true do |t|
     t.datetime "created_at",       :null => false
@@ -24,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20130410150135) do
     t.integer  "current_song_id"
     t.integer  "previous_song_id"
     t.integer  "account_id"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "merchants", ["current_song_id"], :name => "index_merchants_on_current_song_id"
@@ -69,6 +79,8 @@ ActiveRecord::Schema.define(:version => 20130410150135) do
     t.integer  "merchant_id"
     t.string   "account_id"
     t.string   "password"
+    t.float    "lat"
+    t.float    "lng"
   end
 
 end

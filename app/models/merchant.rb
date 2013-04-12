@@ -9,4 +9,23 @@ class Merchant < ActiveRecord::Base
 	belongs_to :current_song, :class_name => "Song", :inverse_of => :current_merchants
 	has_many :users, :foreign_key => "merchant_id"
 
+	def make_address
+		full_address = [address.gsub(" ", "+"), city, state, zip_code.to_s]
+		return full_address.join("+")
+	end
+	def deg_per_met
+		r = 6371000
+		latrad = lat.abs * (2*Math::PI/360)
+		rprime = r * Math.sin(latrad)
+		return 360 / (rprime*2*Math::PI)
+	end
+
+
+
+#	def assign_loc(hash)
+#    	coor = hash["results"][0]["geometry"]["location"]
+#    	lat = coor["lat"]
+#    	lng = coor["lng"]
+#	end
+
 end
