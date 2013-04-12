@@ -35,6 +35,12 @@
       <%= f.text_field :zip_code, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <%= f.label :current_song, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:merchant, :current_song_id, Song.all, :id, :title, options={:prompt => "Select a song"}, {:include_blank => true}) %>
+    </div>
+  </div>
  <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

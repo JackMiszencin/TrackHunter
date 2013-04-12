@@ -4,7 +4,7 @@
 	<%=f.label "Merchant", :class => 'control-label' %>
 	<div class="controls">
 
-    <%= collection_select(:user, :merchant_id, @merchants, :id, :name, options={:prompt => "select a store"}, :class => "merchant")%>
+    <%= collection_select(:user, :merchant_id, @merchants, :id, :name, options={:prompt => "select a store", :include_blank => "Select your location"}, :class => "merchant")%>
    </div>
  </div> 
    <div class="form-actions">
