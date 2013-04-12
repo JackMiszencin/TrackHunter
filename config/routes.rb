@@ -16,6 +16,9 @@ TrackHunter::Application.routes.draw do
   get "accounts/logout"
   post "accounts/login"  
   
+  post "ratings/new"
+
+  root :to => "music_rating_services#index"
   
   #match 'home' => 'Users#home' 
 
