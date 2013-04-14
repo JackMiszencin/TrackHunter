@@ -107,6 +107,5 @@ class UsersController < ApplicationController
   end
 
   def home
-        @current_user.save
   end
 end

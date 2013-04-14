@@ -11,10 +11,10 @@ class User < ActiveRecord::Base
 	end
   
   def lng_up
-  	return lng + (50 * deg_per_met)
+  	return lng + (65 * deg_per_met)
   end
   def lng_low
-  	return lng - (50 * deg_per_met)
+  	return lng - (65 * deg_per_met)
   end
   def lat_up
   	return lat + (50 * deg_per_met)

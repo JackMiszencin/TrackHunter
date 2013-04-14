@@ -19,7 +19,18 @@ class Merchant < ActiveRecord::Base
 		rprime = r * Math.sin(latrad)
 		return 360 / (rprime*2*Math::PI)
 	end
-
+  def lng_up
+  	return lng + (65 * deg_per_met)
+  end
+  def lng_low
+  	return lng - (65 * deg_per_met)
+  end
+  def lat_up
+  	return lat + (50 * deg_per_met)
+  end
+  def lat_low
+  	return lat - (50 * deg_per_met)
+  end
 
 
 #	def assign_loc(hash)
