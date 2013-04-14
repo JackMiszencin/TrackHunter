@@ -1,3 +1,40 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+urlholder = undefined
+position = new Array()
+#message = undefined
+$(document).ready ->
+  urlholder = window.location.pathname
+  $("body").append urlholder
+  $("#storeLink").hide()
+  $("#getGeo").on "click", ->
+    onSuccess = (pos) ->
+      position[0] = pos.coords.latitude
+      position[1] = pos.coords.longitude
+      $("body").append "You are at " + position[0] + position[1]
+      $.ajax
+        url: urlholder
+        data: "lng=" + position[1] + "&lat=" + position[0]
+      $("#storeLink").show()
+
+    onError = (err) ->
+      switch err.code
+        when 0
+          alert "Unknown error: " + err.message
+        when 1
+          alert "You denied permission to use GPS information."
+        when 2
+          alert "The browser was unable to determine a position. Give it another shot, and if that doesn't work, just enter an address."
+        when 3
+          alert "The browser timed out before receiving the position. Give it another shot, and if that doesn't work, just enter an address."
+    navigator.geolocation.getCurrentPosition onSuccess, onError,
+      enableHighAccuracy: true
+      timeout: 20000
+      maximumAge: 120000
+
+
+#  $("#getGeo").fire ->
+#    $.ajax
+#      url: urlholder
+#      data: "lng=" + position[1] + "&lat=" + position[0]

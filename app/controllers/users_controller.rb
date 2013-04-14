@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  after_filter :get_loc, :only => :home
+  protected
+  def get_loc
+        @current_user.lng = params[:lng]
+        @current_user.lat = params[:lat]
+  end
   def index
     @users = User.all
 
@@ -98,5 +104,9 @@ class UsersController < ApplicationController
   def merchant_selection  
     @user = @current_user
     @merchants = Merchant.where(:lng => (@user.lng_low)..(@user.lng_up), :lat => (@user.lat_low)..(@user.lat_up))
+  end
+
+  def home
+        @current_user.save
   end
 end

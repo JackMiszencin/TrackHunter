@@ -1,5 +1,6 @@
 <h3><em><%= "Welcome to TrackHunter " + @current_user.username%></em></h3>  
 
+<div class="btn" id="getGeo">Get Location</div>
 <%= link_to t('.choose_store', :default => t("helpers.links.choose_store")),
-              user_merchant_selection_path, :class => 'btn'  %>
+              user_merchant_selection_path, :class => 'btn', :id => 'storeLink'  %>
 
