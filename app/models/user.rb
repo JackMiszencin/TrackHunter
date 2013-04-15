@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :password, :account_id, :merchant_id
+  attr_accessible :username, :password, :account_id, :merchant_id, :lng, :lat
   belongs_to :merchant
   has_many :ratings, :foreign_key => "user_id"
 

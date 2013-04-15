@@ -13,9 +13,8 @@ $(document).ready ->
       position[0] = pos.coords.latitude
       position[1] = pos.coords.longitude
       $("body").append "You are at " + position[0] + position[1]
-      $.ajax
-        url: urlholder
-        data: "lng=" + position[1] + "&lat=" + position[0]
+      $("#user_lng").val(position[1])
+      $("#user_lat").val(position[0])
       $("#storeLink").show()
 
     onError = (err) ->
@@ -32,9 +31,3 @@ $(document).ready ->
       enableHighAccuracy: true
       timeout: 20000
       maximumAge: 120000
-
-
-#  $("#getGeo").fire ->
-#    $.ajax
-#      url: urlholder
-#      data: "lng=" + position[1] + "&lat=" + position[0]

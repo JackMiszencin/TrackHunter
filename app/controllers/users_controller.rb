@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  after_filter :get_loc, :only => :home
-  protected
-  def get_loc
-        @current_user.lng = params[:lng]
-        @current_user.lat = params[:lat]
-  end
+  #after_filter :get_loc, :only => :home
+  #protected
+  #def get_loc
+  #      @current_user.lng = params[:lng]
+  #      @current_user.lat = params[:lat]
+  #end
   def index
     @users = User.all
 
@@ -31,6 +31,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @user.lng = 5
+    @user.lat = 5
     @user.save
     session[:user_id] = @user.id
 
@@ -50,14 +52,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User ' + session[:username] + ' was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if request.post?
+      respond_to do |format|
+        if @user.save
+          format.html { redirect_to @user, notice: 'User ' + session[:username] + ' was successfully created.' }
+          format.json { render json: @user, status: :created, location: @user }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -66,27 +69,34 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
-   if params[:updated_store]  
-        respond_to do |format|
+    if params[:location]
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
+          format.html {redirect_to user_merchant_selection_path(@current_user)}
+          format.json {head :no_content}
+        else
+        end
+      end
+    elsif params[:updated_store]  
+      respond_to do |format|
         if @user.update_attributes(params[:user])
           format.html { redirect_to new_rating_path, notice:'User merchant successfully updated.' }
           format.json { head :no_content }
         else
         end 
-        end
-   else
+      end
+    else
     
-    respond_to do |format|
+      respond_to do |format|
         if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
+          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
         else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+          format.html { render action: "edit" }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
         end 
       end
-   end
+    end
   end
 
   # DELETE /users/1
@@ -107,5 +117,7 @@ class UsersController < ApplicationController
   end
 
   def home
+    @current_user.lng = params[:lng]
+    @current_user.lat = params[:lat]
   end
 end
