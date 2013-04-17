@@ -3,11 +3,24 @@ class RatingsController < ApplicationController
   # GET /ratings.json
   def index
     if @current_user.is_admin
+      @ratings = Array.new
       @ratings = Rating.all
     elsif @current_user.is_merchant
-      @ratings = Rating.where(:owner => @current_user)
+      @ratings = Array.new
+      @links = Rating.all
+      @links.each do |r|
+        if r.owner == @current_user
+          @ratings << r
+        end
+      end
     else
-      @ratings = Rating.where("user_id = ?", @current_user.id)
+      @ratings = Array.new
+      @links = Rating.all
+      @links.each do |r|
+        if r.user == @current_user
+          @ratings << r
+        end
+      end
     end
     respond_to do |format|
       format.html # index.html.erb

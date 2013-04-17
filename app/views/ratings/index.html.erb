@@ -1,10 +1,17 @@
-<h1>Listing ratings</h1>
+<% if @current_user.is_admin == true %>
+  <h1>All Ratings</h1>
+<% elsif @current_user.is_merchant == true %>
+  <h1>Your Stores' Ratings</h1>
+<% else %>
+  <h1>Listing ratings</h1>
+<% end %>
 
 <table class = "table table-striped">
   <tr>
     <th>Artist</th>
     <th>Title</th>
     <th>Album</th>
+    <th>Like/Dislike</th>
     <th>User</th>
     <th>Merchant</th>
     <th>Date</th>
@@ -20,7 +27,20 @@
     <td><%= rating.song.artist %></td>
     <td><%= rating.song.title %></td>
     <td><%= rating.song.album %></td>
-    <td><%= rating.user %></td>
+    <td>
+      <% if rating.like == true %>
+        <%= "Like" %>
+      <% else %>
+        <%= "Dislike" %>
+      <% end %>
+    </td>
+    <td>
+      <% if rating.user == nil %>
+        <%= " " %>
+      <% else %>
+        <%= rating.user.username %>
+      <% end %>
+    </td>
     <td><%= rating.merchant_name %></td>
     <td><%= rating.created_at.strftime("%B %d, %Y") %></td>
     <% if @current_user.is_admin %>

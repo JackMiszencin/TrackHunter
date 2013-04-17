@@ -9,8 +9,10 @@ class Rating < ActiveRecord::Base
   		full_date = [date.join(" "), created_at.year]
   		return full_date.join(", ")
   	end
+
   	def merchant_name
   		m = Merchant.find_by_id(merchant_id)
   		return m.name
   	end
+
 end	
