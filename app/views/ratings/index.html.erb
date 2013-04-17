@@ -20,7 +20,7 @@
     <td><%= rating.song.artist %></td>
     <td><%= rating.song.title %></td>
     <td><%= rating.song.album %></td>
-    <td><%= rating.user.username %></td>
+    <td><%= rating.user %></td>
     <td><%= rating.merchant_name %></td>
     <td><%= rating.created_at.strftime("%B %d, %Y") %></td>
     <% if @current_user.is_admin %>

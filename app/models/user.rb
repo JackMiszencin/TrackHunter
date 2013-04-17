@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :merchant
   has_many :ratings, :foreign_key => "user_id"
   has_many :businesses, :class_name => "Merchant", :foreign_key => "owner_id", :inverse_of => :owner
+  has_many :owner_ratings, :class_name => "Rating", :through => :businesses, :source => :ratings
 
 	def deg_per_met
 		r = 6371000

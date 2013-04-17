@@ -5,7 +5,7 @@
       <%= f.text_field :username, :class => 'text_field' %>
     </div>
   </div> 
-<div class="control-group">
+  <div class="control-group">
     <%= f.label :password, :class => 'control-label' %>
     <div class="controls">
       <%= f.number_field :password, :class => 'number_field' %>
@@ -15,6 +15,12 @@
     <%= f.label :account_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.number_field :account_id, :class => 'number_field' %>
+    </div>
+  </div> 
+  <div class="control-group">
+    <%= f.label :is_merchant, "Are you a merchant?", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_merchant? %>
     </div>
   </div> 
 

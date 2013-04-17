@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416230839) do
+ActiveRecord::Schema.define(:version => 20130417100503) do
 
   create_table "merchant_ratings", :force => true do |t|
     t.integer "merchant_id"
@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(:version => 20130416230839) do
     t.integer  "song_id"
     t.integer  "merchant_id"
     t.integer  "mumbo"
+    t.integer  "owner_id"
   end
 
   add_index "ratings", ["merchant_id"], :name => "index_ratings_on_merchant_id"
+  add_index "ratings", ["owner_id"], :name => "index_ratings_on_owner_id"
   add_index "ratings", ["song_id"], :name => "index_ratings_on_song_id"
 
   create_table "sessions", :force => true do |t|

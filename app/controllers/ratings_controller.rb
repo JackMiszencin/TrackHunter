@@ -2,8 +2,13 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = Rating.all
-
+    if @current_user.is_admin
+      @ratings = Rating.all
+    elsif @current_user.is_merchant
+      @ratings = Rating.where(:owner => @current_user)
+    else
+      @ratings = Rating.where("user_id = ?", @current_user.id)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @ratings }
