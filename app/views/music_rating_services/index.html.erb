@@ -2,8 +2,6 @@
 
 
 <%= notice %>
-<%= link_to 'Login to Service', accounts_login_path %>
-
-<% unless @current_user.nil? %>
-<%= @current_user.lng %>
-<% end %>
+<!-- <div class = "box-button"> -->
+	<%= link_to 'Login to Service', accounts_login_path, :class => "box-button" %>
+<!--</div>-->

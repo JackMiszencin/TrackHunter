@@ -98,7 +98,8 @@ p {
   font-size: 20px;
   line-height: 100%
 }
-.box-button{
+
+.box-button {
   height: 70px;
   width: 160px;
   font-family: 'Medula One';
@@ -113,6 +114,12 @@ p {
     cursor: hand;
     cursor: pointer;
   }
+}
+a.box-button {
+  width: 500px;
+  text-align: center;
+  font-size: 1em;
+  font-color: black;
 }
 h2{
   text-align: center;

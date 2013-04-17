@@ -6,7 +6,6 @@ position = new Array()
 #message = undefined
 $(document).ready ->
   urlholder = window.location.pathname
-  $("body").append urlholder
   $("#storeLink").hide()
   $("#getGeo").on "click", ->
     onSuccess = (pos) ->
