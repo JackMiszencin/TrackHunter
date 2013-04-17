@@ -4,7 +4,12 @@ class MerchantsController < ApplicationController
   # GET /merchants
   # GET /merchants.json
   def index
-    @merchants = Merchant.all
+    if @current_user.is_admin
+      @merchants = Merchant.all
+    elsif @current_user.businesses != nil
+      @merchants = @current_user.businesses
+    else
+    end
 
     respond_to do |format|
       format.html # index.html.erb

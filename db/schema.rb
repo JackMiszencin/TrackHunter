@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412075021) do
+ActiveRecord::Schema.define(:version => 20130416230839) do
 
   create_table "merchant_ratings", :force => true do |t|
     t.integer "merchant_id"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20130412075021) do
   add_index "merchant_ratings", ["rating_id"], :name => "index_merchant_ratings_on_rating_id"
 
   create_table "merchants", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "name"
     t.string   "address"
     t.string   "city"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130412075021) do
     t.integer  "account_id"
     t.float    "lat"
     t.float    "lng"
+    t.integer  "owner_id",         :default => 1, :null => false
   end
 
   add_index "merchants", ["current_song_id"], :name => "index_merchants_on_current_song_id"
@@ -74,13 +75,15 @@ ActiveRecord::Schema.define(:version => 20130412075021) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "merchant_id"
     t.string   "account_id"
     t.string   "password"
     t.float    "lat"
     t.float    "lng"
+    t.boolean  "is_merchant", :default => false, :null => false
+    t.boolean  "is_admin",    :default => false, :null => false
   end
 
 end

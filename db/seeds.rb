@@ -1,19 +1,25 @@
-Merchant.delete_all
-
-Merchant.create(name: "Crema Cafe", address: "27 Brattle St", city: "Cambridge", state: "MA", zip_code: "02138", current_song_id: rand(1..12), previous_song_id: rand(1..12))
-Merchant.create(name: "Buffalo Exchange", address: "238 Elm St", city: "Somerville", state: "MA", zip_code: "02144", current_song_id: rand(1..12), previous_song_id: rand(1..12))
-Merchant.create(name: "Cafe 1369", address: "1369 Cambridge St", city: "Cambridge", state: "MA", zip_code: "02139", current_song_id: rand(1..12), previous_song_id: rand(1..12))
-Merchant.create(name: "MetroRock", address: "69 Norman St", city: "Everett", state: "MA", zip_code: "02149", current_song_id: rand(1..12), previous_song_id: rand(1..12))
-Merchant.create(name: "Saloon", address: "255 Elm St", city: "Somerville", state: "MA", zip_code: "02144", current_song_id: rand(1..12), previous_song_id: rand(1..12))
-Merchant.create(name: "Boloco", address: "284 Congress St", city: "Boston", state: "MA", zip_code: "02210", current_song_id: rand(1..12), previous_song_id: rand(1..12))
-
-Merchant.all do |merchant|
-
-	merchant.current_song_id = rand(1..12)
-	merchant.previous_song_id = rand (1..12)
-	Song.find_by_id(merchant.current_song_id).current_merchants << merchant
-	Song.find_by_id(merchant.previous_song_id).previous_merchants << merchant
+User.all do |user|
+	user.is_admin = "true"
+	user.is_merchant = "true"
+	user.save
 end
+
+#Merchant.delete_all
+
+#Merchant.create(name: "Crema Cafe", address: "27 Brattle St", city: "Cambridge", state: "MA", zip_code: "02138", current_song_id: rand(1..12), previous_song_id: rand(1..12))
+#Merchant.create(name: "Buffalo Exchange", address: "238 Elm St", city: "Somerville", state: "MA", zip_code: "02144", current_song_id: rand(1..12), previous_song_id: rand(1..12))
+#Merchant.create(name: "Cafe 1369", address: "1369 Cambridge St", city: "Cambridge", state: "MA", zip_code: "02139", current_song_id: rand(1..12), previous_song_id: rand(1..12))
+#Merchant.create(name: "MetroRock", address: "69 Norman St", city: "Everett", state: "MA", zip_code: "02149", current_song_id: rand(1..12), previous_song_id: rand(1..12))
+#Merchant.create(name: "Saloon", address: "255 Elm St", city: "Somerville", state: "MA", zip_code: "02144", current_song_id: rand(1..12), previous_song_id: rand(1..12))
+#Merchant.create(name: "Boloco", address: "284 Congress St", city: "Boston", state: "MA", zip_code: "02210", current_song_id: rand(1..12), previous_song_id: rand(1..12))
+
+#Merchant.all do |merchant|
+
+#	merchant.current_song_id = rand(1..12)
+#	merchant.previous_song_id = rand (1..12)
+#	Song.find_by_id(merchant.current_song_id).current_merchants << merchant
+#	Song.find_by_id(merchant.previous_song_id).previous_merchants << merchant
+#end
 
 #Song.create(title: "Esmerelda", artist: "Ben Howard", album: "The Burgh Island EP")
 #Song.create(title: "Reckoner", artist: "Radiohead", album: "In Rainbows")

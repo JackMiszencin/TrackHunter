@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :password, :account_id, :merchant_id, :lng, :lat
+  attr_accessible :username, :password, :account_id, :merchant_id, :lng, :lat, :is_admin, :is_merchant
   belongs_to :merchant
   has_many :ratings, :foreign_key => "user_id"
+  has_many :businesses, :class_name => "Merchant", :foreign_key => "owner_id", :inverse_of => :owner
 
 	def deg_per_met
 		r = 6371000

@@ -6,9 +6,9 @@
 	<div class="controls">
 
     <%= collection_select(:user, :merchant_id, @merchants, :id, :name, options={:prompt => "Select your current store"}, :class => "merchant")%>
-   </div>
+ 	</div>
  </div> 
-   <div class="form-actions">
+ <div class="form-actions">
    <%= submit_tag "Update Store", :class => "form_submit", :name => "updated_store" %> 
    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), new_rating_path, :class => 'btn' %>
 </div>

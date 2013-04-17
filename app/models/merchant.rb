@@ -8,6 +8,7 @@ class Merchant < ActiveRecord::Base
 	belongs_to :previous_song, :class_name => "Song", :inverse_of => :previous_merchants
 	belongs_to :current_song, :class_name => "Song", :inverse_of => :current_merchants
 	has_many :users, :foreign_key => "merchant_id"
+	belongs_to :owner, :class_name => "User", :inverse_of => :businesses
 
 	def make_address
 		full_address = [address.gsub(" ", "+"), city, state, zip_code.to_s]
@@ -20,10 +21,10 @@ class Merchant < ActiveRecord::Base
 		return 360 / (rprime*2*Math::PI)
 	end
   def lng_up
-  	return lng + (65 * deg_per_met)
+  	return lng + (50 * deg_per_met)
   end
   def lng_low
-  	return lng - (65 * deg_per_met)
+  	return lng - (50 * deg_per_met)
   end
   def lat_up
   	return lat + (50 * deg_per_met)
