@@ -8,6 +8,7 @@ TrackHunter::Application.routes.draw do
   resources :users do
     get :home
     get :merchant_selection    
+    post :edit
   end
   #match "user/home" => "Users#home", :method => "get"
   
@@ -17,7 +18,7 @@ TrackHunter::Application.routes.draw do
   post "accounts/login"  
   
   post "ratings/new"
-
+  post "merchants/edit"
   root :to => "music_rating_services#index"
   
   #match 'home' => 'Users#home' 

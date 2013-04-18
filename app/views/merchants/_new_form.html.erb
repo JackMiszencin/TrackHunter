@@ -41,7 +41,7 @@
       <%= collection_select(:merchant, :current_song_id, Song.all, :id, :title, options={:prompt => "Select a song"}, {:include_blank => true}) %>
     </div>
   </div>
- <div class="button-holder">
+  <div class="button-holder">
     <%= f.submit "Create Merchant", :class => 'mini-box-button' %>
     <%= link_to "Return to User Home", user_home_path(@current_user), :class => 'mini-box-button' %>
   </div>

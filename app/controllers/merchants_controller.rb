@@ -47,10 +47,8 @@ class MerchantsController < ApplicationController
   # POST /merchants.json
   def create
     @merchant = Merchant.new(params[:merchant])
-    unless @current_user.is_admin
-      @merchant.owner_id = @current_user.id
-      @current_user.businesses << @merchant
-    end
+    @merchant.owner = @current_user
+#    @current_user.businesses << @merchant
     uri = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=" + @merchant.make_address + "&sensor=true").open.read
     urihash = JSON.parse(uri)
     coor = urihash["results"][0]["geometry"]["location"]
