@@ -8,10 +8,22 @@
 	color: white;
 	position: absolute;
 	left: 0px;
+	height: 70px;
+	width: 160px;
+
 }
 #dislike {
 	background-color: #660000;
 	color: white;
 	position: absolute;
 	left: 220px;
+	height: 70px;
+	width: 160px;
+
+}
+
+#rating-buttons{
+	position: relative;
+	left: 20%;
+	top: -20px;
 }

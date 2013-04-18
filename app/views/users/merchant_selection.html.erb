@@ -1,15 +1,15 @@
-<%= "Select a store, " + @current_user.username %>
-<%= form_for @current_user, :html => { :class => 'form-horizontal' } do |f| %>   
+<div class="center_block" id ="form_holder">
+	<h2><%= "Where are you now?" %></h2>
+	<%= form_for @current_user, :html => { :class => 'form-horizontal' } do |f| %>   
 
-<div class="control-group">
-	<%=f.label "Merchant", :class => 'control-label' %>
-	<div class="controls">
+	<div class="control-group">
+		<div class="controls">
 
-    <%= collection_select(:user, :merchant_id, @merchants, :id, :name, options={:prompt => "Select your current store"}, :class => "merchant")%>
- 	</div>
- </div> 
- <div class="form-actions">
-   <%= submit_tag "Update Store", :class => "form_submit", :name => "updated_store" %> 
-   <%= link_to t('.cancel', :default => t("helpers.links.cancel")), new_rating_path, :class => 'btn' %>
+	    <%= collection_select(:user, :merchant_id, @merchants, :id, :name, options={:prompt => "Select your current store"}, :class => "merchant")%>
+	 	</div>
+	 </div> 
+	 <div class = "button-holder">
+	   <%= submit_tag "Update Store", :class => "box-button", :name => "updated_store", :id => "form-button"%> 
+	</div>
+	<% end %>   
 </div>
-<% end %>   

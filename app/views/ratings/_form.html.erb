@@ -13,14 +13,14 @@
 
 
   <p>Hey, like what you hear? Give us a quick like/dislike rating, and we'll go fetch the track information.</p>
-  <div id = "form_holder">
-  <%= form_tag do %>
-    <%= hidden_field_tag 'like', 'true' %>
-    <%= submit_tag 'HELL YES', :class=> "box-button", :id => "like" %> 
-  <% end %>
-  <!-- <div class = "box-button" id="like" >HELL YES</div> -->
-  <%= form_tag do %>
-    <%= hidden_field_tag 'like', 'false' %>
-    <%= submit_tag 'GOD NO', :class => "box-button", :id => "dislike" %>
-  <% end %>
-</div>
+  <div class = "button-holder" id="rating-buttons">
+    <%= form_tag do %>
+      <%= hidden_field_tag 'like', 'true' %>
+      <%= submit_tag 'HELL YES', :class=> "box-button", :id => "like" %> 
+    <% end %>
+    <!-- <div class = "box-button" id="like" >HELL YES</div> -->
+    <%= form_tag do %>
+      <%= hidden_field_tag 'like', 'false' %>
+      <%= submit_tag 'GOD NO', :class => "box-button", :id => "dislike" %>
+    <% end %>
+  </div>

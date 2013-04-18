@@ -1,11 +1,12 @@
-<h3><em><%= "Welcome to TrackHunter " + @current_user.username%></em></h3>  
-<%= notice %>
-<div class="btn" id="getGeo">Get Location</div>
-<div id = "storeLink">
-	<%= form_for @current_user do |f| %>
-		<%= f.hidden_field(:lng) %>
-		<%= f.hidden_field(:lat) %>
-		<%= submit_tag "Choose Store", :class => 'form_submit', :name => 'location'  %>
-	<%end%>
+<div class = "center_block" id="form_holder">
+	<h3><%= "Welcome to TrackHunter, " + @current_user.username%></h3>  
+	<p>Get your GPS location below, and then move on to pick your store.</p>
+	<div class="box-button" id="getGeo">Get Location</div>
+	<div id = "storeLink">
+		<%= form_for @current_user do |f| %>
+			<%= f.hidden_field(:lng) %>
+			<%= f.hidden_field(:lat) %>
+			<%= submit_tag "Choose Store", :class => 'box-button', :name => 'location', :id => 'form-button'  %>
+		<%end%>
+	</div>
 </div>
-<!-- <div class="btn" id="flashGeo">Coordinate Alert!</div> -->

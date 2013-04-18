@@ -1,16 +1,18 @@
-<p id="notice"><%= notice %></p>
-<% if @rating.like == true %>
-	<h2>GLAD YOU LIKED IT!</h2>
-	<p>We'll let the merchant know you liked the song, so hopefully they'll play more like it in the future. Meanwhile, here's the track info.</p>
-<% else %>
-	<h2>YIKES, THAT'S TOO BAD</h2>
-	<p>We'll let the merchant know you didn't like the track. Hopefully there won't be much more of that going around. Here's the track info.</p>
-<% end %>
-<h4><%= "Title: " + @rating.song.title %></h4>
-<h4><%= "Artist: " + @rating.song.artist %></h4>
-<h4><%= "Album: " + @rating.song.album %></h4>
+<div class="center_block">
+	<p id="notice"><%= notice %></p>
+	<% if @rating.like == true %>
+		<h2>GLAD YOU LIKED IT!</h2>
+		<p>We'll let the merchant know you liked the song, so hopefully they'll play more like it in the future. Meanwhile, here's the track info.</p>
+	<% else %>
+		<h2>YIKES, THAT'S TOO BAD</h2>
+		<p>We'll let the merchant know you didn't like the track. Hopefully there won't be much more of that going around. Here's the track info.</p>
+	<% end %>
+	<h4><%= "Title: " + @rating.song.title %></h4>
+	<h4><%= "Artist: " + @rating.song.artist %></h4>
+	<h4><%= "Album: " + @rating.song.album %></h4>
 
-<div id="link_holder">
-<%= link_to 'Edit', edit_rating_path(@rating) %> |
-<%= link_to 'Back', ratings_path %>
+	<div id="link_holder">
+	<%= link_to 'Edit', edit_rating_path(@rating) %> |
+	<%= link_to 'User Home', user_home_path(@current_user) %>
+	</div>
 </div>

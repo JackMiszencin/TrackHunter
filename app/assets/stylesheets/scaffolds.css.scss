@@ -67,8 +67,7 @@ div {
     list-style: square;
   }
 }
-#center_block {
-  width: 410px;
+.center_block {
   padding: 0px;
   position: absolute;
   left: 120px;
@@ -76,32 +75,40 @@ div {
   border: 8px #32385a dashed;
   border-radius: 20px;
 }
+#welcome_block {
+  width: 60%;
+}
 #form_holder{
   margin-top: 0;
   margin-bottom: 20px;
-  margin-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
   float: top;
-  height: 80px;
-  width: 350px;
+  height: auto;
 }
+
 #link_holder{
-  margin-left: 30px;
+  position: absolute;
+
+  margin-left: 15%;
   margin-bottom: 20px;
   margin-top: 20px;
 }
-p {
-  margin-left: 30px;
-  margin-right: 40px;
-  margin-bottom: 40px;
-  width: 355px;
+.center_block p {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
   text-align: justify;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 100%
 }
-
+#storeLink p {
+  text-align: center;
+  margin-top: 28px;
+  margin-left: 15px;
+  margin-bottom: -15px;
+}
 .box-button {
-  height: 70px;
-  width: 160px;
   font-family: 'Medula One';
   font-size: 5em;
   line-height: 80%;
@@ -109,23 +116,41 @@ p {
   vertical-align: middle;
   border: 5px solid black;
   border-radius: 5px;
-  margin-left: 15px;
   &:hover{
     cursor: hand;
     cursor: pointer;
   }
 }
-a.box-button {
-  width: 500px;
-  text-align: center;
-  font-size: 1em;
-  font-color: black;
+#single-in-box {
+  margin-bottom: 25px;
+  margin-top: 25px;
+  horizontal-align: middle;
+  position: absolute;
+  left: 40%;
+  top: 80%;
+  height: .85em;
+  bottom: 15px;
+  padding: 2px;
+  font-size: 2.5em;
 }
+
+#form-button {
+  position: absolute;
+  width: 30%;
+  left: 35%;
+  height: auto;
+  font-size: 2em;
+  &:hover{
+    background-color: black;
+    color: white;
+  }
+} 
+
 h2{
   text-align: center;
   margin-left: 0px;
   font-family: "PT Sans";
-  font-size: 40px;
+  font-size: 36px;
   line-height: 100%;
 }
 h3 {
@@ -140,4 +165,22 @@ h4 {
   margin-left: 30px;
   line-height: 70%;
   font-family: Arial;
+}
+
+form{
+  margin: 20px;
+  margin-bottom: 50px;
+}
+form label {
+  font-size: 20px;
+  font-family: "PT Sans";
+}
+
+.control-group{
+  position: relative;
+  left: -25%
+}
+.button-holder{
+  height: 1em;
+  margin-bottom: 10%;
 }

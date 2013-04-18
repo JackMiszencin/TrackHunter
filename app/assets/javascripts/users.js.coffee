@@ -11,10 +11,10 @@ $(document).ready ->
     onSuccess = (pos) ->
       position[0] = pos.coords.latitude
       position[1] = pos.coords.longitude
-      $("body").append "You are at " + position[0] + position[1]
       $("#user_lng").val(position[1])
       $("#user_lat").val(position[0])
       $("#storeLink").show()
+      $("#storeLink").prepend("<p><em>Location Received<em><p>")
 
     onError = (err) ->
       switch err.code
