@@ -37,6 +37,15 @@ div {
 
 #notice {
   color: green;
+  text-align: center;
+  font-weight: bold;
+  border: 1px green solid;
+}
+p #notice {
+  color: green;
+  text-align: center;
+  font-weight: bold;
+  border: 1px green solid;
 }
 
 .field_with_errors {
@@ -87,20 +96,26 @@ div {
   height: auto;
 }
 
+.center_block #form_holder{
+  position: relative;
+  left: 10%;
+}
+
 #link_holder{
   position: absolute;
 
   margin-left: 15%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   margin-top: 20px;
 }
 .center_block p {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
-  text-align: justify;
+  text-align: center;
   font-size: 14px;
-  line-height: 100%
+  line-height: 100%;
+  width: 60%;
 }
 #storeLink p {
   text-align: center;
@@ -108,6 +123,12 @@ div {
   margin-left: 15px;
   margin-bottom: -15px;
 }
+#index_holder{
+  width: 80%;
+  height: auto;
+  padding: 10px;
+}
+
 .box-button {
   font-family: 'Medula One';
   font-size: 5em;
@@ -145,7 +166,33 @@ div {
     color: white;
   }
 } 
-
+.mini-box-button {
+  font-family: 'Medula One';
+  font-size: 2em;
+  height: auto;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  line-height: 80%;
+  text-align: center;
+  vertical-align: middle;
+  border: 5px solid black;
+  border-radius: 5px;
+  &:hover{
+    cursor: hand;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+}
+.center_block dl {
+  position: relative;
+  left: -20%;
+}
+a.mini-box-button{
+  text-decoration: none;
+  color: black
+}
 h2{
   text-align: center;
   margin-left: 0px;
@@ -154,17 +201,24 @@ h2{
   line-height: 100%;
 }
 h3 {
-  text-align: justify;
-  margin-left: 30px;
-  margin-right: 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   font-family: "PT Sans";
   font-size: 22px;
   line-height: 100%;
 }
 h4 {
-  margin-left: 30px;
+  margin-left: 4px;
   line-height: 70%;
   font-family: Arial;
+}
+h5 {
+  font-family: "PT Sans";
+  font-size: 16px;
+  color: green;
+  font-weight: bold;
+  text-align: center;
 }
 
 form{

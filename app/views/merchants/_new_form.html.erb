@@ -41,10 +41,9 @@
       <%= collection_select(:merchant, :current_song_id, Song.all, :id, :title, options={:prompt => "Select a song"}, {:include_blank => true}) %>
     </div>
   </div>
- <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                merchants_path, :class => 'btn' %>
+ <div class="button-holder">
+    <%= f.submit "Create Merchant", :class => 'mini-box-button' %>
+    <%= link_to "Return to User Home", user_home_path(@current_user), :class => 'mini-box-button' %>
   </div>
 
 <% end %>

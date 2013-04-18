@@ -7,12 +7,13 @@
 		<h2>YIKES, THAT'S TOO BAD</h2>
 		<p>We'll let the merchant know you didn't like the track. Hopefully there won't be much more of that going around. Here's the track info.</p>
 	<% end %>
-	<h4><%= "Title: " + @rating.song.title %></h4>
-	<h4><%= "Artist: " + @rating.song.artist %></h4>
-	<h4><%= "Album: " + @rating.song.album %></h4>
-
+	<div id="song-holder">
+		<h4><%= "Title: " + @rating.song.title %></h4>
+		<h4><%= "Artist: " + @rating.song.artist %></h4>
+		<h4><%= "Album: " + @rating.song.album %></h4>
+	</div>
 	<div id="link_holder">
-	<%= link_to 'Edit', edit_rating_path(@rating) %> |
+	<%= link_to 'Change Rating', edit_rating_path(@rating) %> |
 	<%= link_to 'User Home', user_home_path(@current_user) %>
 	</div>
 </div>

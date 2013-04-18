@@ -1,5 +1,7 @@
 <%- model_class = User -%>
-<div class="page-header">
-  <h2><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human %></h2>
+<div class = "center_block">
+  <h2>New User Account</h2>
+  <div id = "form_holder">
+		<%= render :partial => 'new_form' %>
+	</div>
 </div>
-<%= render :partial => 'new_form' %>

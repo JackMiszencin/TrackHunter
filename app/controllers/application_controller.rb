@@ -45,10 +45,10 @@ class ApplicationController < ActionController::Base
   def is_current
   	return unless self.controller_name == "users"
   	if @current_user == nil
-  		flash[:notice] = "You cannot access this page without being logged in to the proper account."
+  		flash[:notice] = "You cannot access this page without being logged in to the proper account2."
   		redirect_to root_path
   	elsif !@current_user.is_admin
-  		if params[:id] !=  @current_user.id
+  		if params[:id] !=  @current_user.id && params[:user] != @current_user
   			flash[:notice] = "You cannot access this page without being logged in to the proper account."
   			redirect_to root_path
   		else

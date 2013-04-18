@@ -1,59 +1,65 @@
 <%- model_class = Merchant -%>
-<% if @current_user.is_admin || @current_user.businesses != [] %>
-  <div class="page-header">
-    <h2>
-      <% if !@current_user.is_admin %>
-        <%= "My " %>
-      <% end %>
-        <%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
-  </div>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= model_class.human_attribute_name(:name) %></th>
-        <th><%= model_class.human_attribute_name(:address) %></th> 
-	      <th><%= model_class.human_attribute_name(:city) %></th>  
-        <th><%= model_class.human_attribute_name(:state) %></th>
-        <th><%= model_class.human_attribute_name(:zip_code) %></th>
-        <th>Owner</th>
-        <th><%=t '.actions', :default => t("helpers.actions") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @merchants.each do |merchant| %>
-        <tr>      
-          <td><%= merchant.name %></td>
-          <td><%= merchant.address %></td>  
-          <td><%= merchant.city %></td>
-	        <td><%= merchant.state %></td> 
-	        <td><%= merchant.zip_code %></td> 
-          <td>
-            <% if merchant.owner == nil %>
-              <%= " " %>
-            <% else %>
-              <%= merchant.owner.username %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to t('.edit', :default => "Edit Merchant"),
-                      edit_merchant_path(merchant), :class => 'btn btn-mini' %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      merchant_path(merchant),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => ' Are you sure?')) },
-                        :class => 'btn btn-mini btn-danger' %>
-          </td>
+<div class = "center_block" id = "index_holder">
+  <% if @current_user.is_admin || @current_user.businesses != [] %>
+    <div class="page-header">
+      <h2>
+        <% if !@current_user.is_admin %>
+          <%= "My " %>
+        <% end %>
+          <%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:name) %></th>
+          <th><%= model_class.human_attribute_name(:address) %></th> 
+  	      <th><%= model_class.human_attribute_name(:city) %></th>  
+          <th><%= model_class.human_attribute_name(:state) %></th>
+          <th><%= model_class.human_attribute_name(:zip_code) %></th>
+          <th>Owner</th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @merchants.each do |merchant| %>
+          <tr>      
+            <td><%= merchant.name %></td>
+            <td><%= merchant.address %></td>  
+            <td><%= merchant.city %></td>
+  	        <td><%= merchant.state %></td> 
+  	        <td><%= merchant.zip_code %></td> 
+            <td>
+              <% if merchant.owner == nil %>
+                <%= " " %>
+              <% else %>
+                <%= merchant.owner.username %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to t('.edit', :default => "Edit Merchant"),
+                        edit_merchant_path(merchant), :class => 'btn btn-mini' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        merchant_path(merchant),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => ' Are you sure?')) },
+                          :class => 'btn btn-mini btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_merchant_path,
-            :class => 'btn btn-primary' %>
-<% else %>
-  <%= notice %>
-  <br>
-  <%= "You can create your own merchant account " %>
-  <%= link_to "here", new_user_path %>
-<% end %>
+    <%= link_to "Create a new Merchant",
+              new_merchant_path %>
+  <% else %>
+    <%= notice %>
+    <br>
+    <% if @current_user.is_merchant %>
+      <%= "Hmm, seems like you don't have any businesses you're operating. You can create a new one " %>
+      <%= link_to "here", new_merchant_path %>
+    <% else %>
+      <%= "Seems like you're not a business owner. You can create a new merchant account to manage your businesses " %>
+      <%= link_to "here.", new_user_path %>
+    <% end %>
+  <% end %>
+</div>
