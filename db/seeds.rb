@@ -1,9 +1,3 @@
-User.all do |user|
-	user.is_admin = "true"
-	user.is_merchant = "true"
-	user.save
-end
-
 #Merchant.delete_all
 
 #Merchant.create(name: "Crema Cafe", address: "27 Brattle St", city: "Cambridge", state: "MA", zip_code: "02138", current_song_id: rand(1..12), previous_song_id: rand(1..12))
@@ -21,18 +15,18 @@ end
 #	Song.find_by_id(merchant.previous_song_id).previous_merchants << merchant
 #end
 
-#Song.create(title: "Esmerelda", artist: "Ben Howard", album: "The Burgh Island EP")
-#Song.create(title: "Reckoner", artist: "Radiohead", album: "In Rainbows")
-#Song.create(title: "Time", artist: "Pink Floyd", album: "Dark Side Of The Moon")
-#Song.create(title: "I Turn My Camera On", artist: "Spoon", album: "Gimme Fiction")
-#Song.create(title: "Spanish Sahara", artist: "Foals", album: "Total Life Forever")
-#Song.create(title: "Myth", artist: "Beach House", album: "Bloom")
-#Song.create(title: "Dani California", artist: "Red Hot Chili Peppers", album: "Stadium Arcadium")
-#Song.create(title: "Future Reflections", artist: "MGMT", album: "Oracular Spectacular")
-#Song.create(title: "L.E.S. Artistes", artist: "Santigold", album: "Santigold")
-#Song.create(title: "Ulysses", artist: "Franz Ferdinand", album: "Tonight")
-#Song.create(title: "Idaho", artist: "Josh Ritter", album: "The Animal Years")
-#Song.create(title: "All These Things That I've Done", artist: "The Killers", album: "Hot Fuss")
+Song.create(title: "Esmerelda", artist: "Ben Howard", album: "The Burgh Island EP")
+Song.create(title: "Reckoner", artist: "Radiohead", album: "In Rainbows")
+Song.create(title: "Time", artist: "Pink Floyd", album: "Dark Side Of The Moon")
+Song.create(title: "I Turn My Camera On", artist: "Spoon", album: "Gimme Fiction")
+Song.create(title: "Spanish Sahara", artist: "Foals", album: "Total Life Forever")
+Song.create(title: "Myth", artist: "Beach House", album: "Bloom")
+Song.create(title: "Dani California", artist: "Red Hot Chili Peppers", album: "Stadium Arcadium")
+Song.create(title: "Future Reflections", artist: "MGMT", album: "Oracular Spectacular")
+Song.create(title: "L.E.S. Artistes", artist: "Santigold", album: "Santigold")
+Song.create(title: "Ulysses", artist: "Franz Ferdinand", album: "Tonight")
+Song.create(title: "Idaho", artist: "Josh Ritter", album: "The Animal Years")
+Song.create(title: "All These Things That I've Done", artist: "The Killers", album: "Hot Fuss")
 
 
 

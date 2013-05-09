@@ -7,8 +7,8 @@ TrackHunter::Application.routes.draw do
 
   resources :users do
     get :home
-    get :merchant_selection    
-    post :edit
+    get :merchant_selection
+    post :edit 
   end
   #match "user/home" => "Users#home", :method => "get"
   

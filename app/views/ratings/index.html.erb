@@ -43,13 +43,7 @@
           <%= rating.user.username %>
         <% end %>
       </td>
-      <td>
-        <% if rating.merchant == nil %>
-          <%= " " %>
-        <% else %>
-          <%= rating.merchant_name %>
-        <% end %>
-      </td>
+      <td><%= rating.merchant_name %></td>
       <td><%= rating.created_at.strftime("%B %d, %Y") %></td>
       <% if @current_user.is_admin %>
         <td><%= link_to 'Show', rating %></td>
