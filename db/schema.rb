@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417100503) do
+ActiveRecord::Schema.define(:version => 20130512201048) do
 
   create_table "merchant_ratings", :force => true do |t|
     t.integer "merchant_id"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20130417100503) do
     t.integer  "user_id"
     t.integer  "song_id"
     t.integer  "merchant_id"
-    t.integer  "mumbo"
     t.integer  "owner_id"
   end
 
@@ -76,16 +75,29 @@ ActiveRecord::Schema.define(:version => 20130417100503) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "username"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "merchant_id"
-    t.string   "account_id"
-    t.string   "password"
     t.float    "lat"
     t.float    "lng"
-    t.boolean  "is_merchant", :default => false, :null => false
-    t.boolean  "is_admin",    :default => false, :null => false
+    t.boolean  "is_merchant",            :default => false, :null => false
+    t.boolean  "is_admin",               :default => false, :null => false
+    t.integer  "merchant_id"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: PlaceTags_development
+  database: TrackHunter_development
   pool: 5
   timeout: 5000
   username: jack
@@ -18,8 +18,17 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: PlaceTags_test
+  database: TrackHunter_test
   pool: 5
   timeout: 5000
   username: jack
   password: bangaluru
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: TrackHunter_production
+  pool: 5
+  timeout: 5000
+  username: jack
+  password: bangaluru  
