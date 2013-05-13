@@ -1,7 +1,7 @@
 <div class = "center_block" id="index_holder">
-  <% if @current_user.is_admin == true %>
+  <% if current_user.is_admin == true %>
     <h2>All Ratings</h2>
-  <% elsif @current_user.is_merchant == true %>
+  <% elsif current_user.is_merchant == true %>
     <h2>Your Stores' Ratings</h2>
   <% else %>
     <h2>Listing ratings</h2>
@@ -56,5 +56,5 @@
 
   <br />
 
-  <%= link_to 'New Rating', user_home_path(@current_user) %>
+  <%= link_to 'New Rating', home_path(current_user) %>
 </div>

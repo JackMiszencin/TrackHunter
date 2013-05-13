@@ -2,14 +2,14 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    if @current_user.is_admin
+    if current_user.is_admin
       @ratings = Array.new
       @ratings = Rating.all
-    elsif @current_user.is_merchant
+    elsif current_user.is_merchant
       @ratings = Array.new
       @links = Rating.all
       @links.each do |r|
-        if r.owner == @current_user
+        if r.owner == current_user
           @ratings << r
         end
       end
@@ -17,7 +17,7 @@ class RatingsController < ApplicationController
       @ratings = Array.new
       @links = Rating.all
       @links.each do |r|
-        if r.user == @current_user
+        if r.user == current_user
           @ratings << r
         end
       end
@@ -43,7 +43,7 @@ class RatingsController < ApplicationController
   # GET /ratings/new.json
   def new
     @rating = Rating.new
-    @merchant = @current_user.merchant
+    @merchant = current_user.merchant
     @song = @merchant.current_song
 
     if request.post?
@@ -53,7 +53,7 @@ class RatingsController < ApplicationController
       @rating.merchant = @merchant
       @rating.like = params[:like]
       @rating.save
-      @current_user.ratings << @rating
+      current_user.ratings << @rating
       redirect_to @rating
     end
   end

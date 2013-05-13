@@ -1,9 +1,10 @@
 <div class = "center_block" id="form_holder">
-	<h3><%= "Welcome to TrackHunter, " + @current_user.username%></h3>  
+	<h3><%= "Welcome to TrackHunter, " + current_user.email%></h3>  
 	<p>To start rating a song, get your GPS location below, and then move on to pick your store.</p>
 	<div class="box-button" id="getGeo">Get Location</div>
 	<div id = "storeLink">
-		<%= form_for @current_user do |f| %>
+		<%= form_for :user, :url => "update" do |f| %>
+			<%= f.hidden_field(:home_marker) %>
 			<%= f.hidden_field(:lng) %>
 			<%= f.hidden_field(:lat) %>
 			<%= submit_tag "Choose Store", :class => 'box-button', :name => 'location', :id => 'form-button'  %>

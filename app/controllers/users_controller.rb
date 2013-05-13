@@ -1,11 +1,20 @@
 class Users::SessionsController < Devise::SessionsController
 	def merchant_selection
-		@user = current_user
+		@user = @current_user
 		@merchants = Merchant.where(:lng => (@user.lng_low)..(@user.lng_up), :lat => (@user.lat_low)..(@user.lat_up))
 	end
 	def home
-		current_user.lng = params[:lng]
-		current_user.lng = params[:lat]
+		@user = @current_user
+		if request.post?
+			@current_user.lng = params[:lng]
+			@current_user.lng = params[:lat]
+			@current_user.save
+			
+			respond_to do |format|
+				format.html
+				format.json { render json: @user }
+			end
+		end
 	end
   def update
 	  @user = User.find(params[:id])
@@ -25,6 +34,14 @@ class Users::SessionsController < Devise::SessionsController
 	      else
 	      end 
 	    end
+	  elsif params[:home_marker]
+	  	respond_to do |format|
+	  		if @user.update_attributes(params[:user])
+	  			format.html { redirect_to merchant_selection_path(@current_user)}
+	  			format.json {head :no_content}
+	  		else
+	  		end
+	  	end
 	  else  
 	    respond_to do |format|
 	      if @user.update_attributes(params[:user])
