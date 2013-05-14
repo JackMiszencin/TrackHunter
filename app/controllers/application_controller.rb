@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   def create_listener
     return unless self.controller_name == "registrations"
     listener = Listener.new
-    user = User.find_by_email(params[:user][:email])
+    user = User.find_for_authentication(:email => params[:user][:email])
     listener.user_id = user.id
     user.listener = listener
     listener.save
