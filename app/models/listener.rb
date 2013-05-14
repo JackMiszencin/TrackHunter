@@ -3,9 +3,7 @@ class Listener < ActiveRecord::Base
   attr_accessible :user_id, :merchant_id, :lng, :lat
   belongs_to :merchant
   belongs_to :user
-  has_many :ratings, :foreign_key => "user_id"
-  has_many :businesses, :class_name => "Merchant", :foreign_key => "owner_id", :inverse_of => :owner
-  has_many :owner_ratings, :class_name => "Rating", :through => :businesses, :source => :ratings, :dependent => :destroy
+  has_many :ratings, :foreign_key => "listener_id"
 
 	def deg_per_met
 		r = 6371000

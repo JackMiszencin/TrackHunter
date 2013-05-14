@@ -1,7 +1,7 @@
 class Rating < ActiveRecord::Base
 	belongs_to :song
 	belongs_to :merchant
-  	belongs_to :user
+  	belongs_to :listener
   	has_one :owner, :class_name => "User", :through => :merchant, :source => :owner
 
   	def time_print
