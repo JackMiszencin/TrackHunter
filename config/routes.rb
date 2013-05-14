@@ -7,11 +7,13 @@ TrackHunter::Application.routes.draw do
 
   resources :ratings
 
+  resources :listeners do
+    get :home
+    get :merchant_selection
+  end
+
   devise_scope :user do
-    get :home, :to => "devise/sessions#home"
-    get :merchant_selection, :to => "devise/sessions#merchant_selection"
     get :show, :to => "devise/sessions#show"
-    post :update, :to => "devise/sessions#update"
   end
   #match "user/home" => "Users#home", :method => "get"
   

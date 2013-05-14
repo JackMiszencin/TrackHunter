@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512201048) do
+ActiveRecord::Schema.define(:version => 20130513234606) do
+
+  create_table "listeners", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "merchant_id"
+    t.string   "account_id"
+    t.float    "lat",         :default => 0.0, :null => false
+    t.float    "lng",         :default => 0.0, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
 
   create_table "merchant_ratings", :force => true do |t|
     t.integer "merchant_id"

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 #	before_filter :is_logged_in, :except => [:new, :merchant_selection]
 	before_filter :songs_filter
 	before_filter :rating_guard, :only => [:edit, :destroy]
+  after_filter :create_listener, :only => :create
 	protected
 	def songs_filter
 		return unless self.controller_name == "songs"
@@ -17,6 +18,15 @@ class ApplicationController < ActionController::Base
 			return
 		end
 	end
+  def create_listener
+    return unless self.controller_name == "registrations"
+    listener = Listener.new
+    user = User.find_by_email(params[:user][:email])
+    listener.user_id = user.id
+    user.listener = listener
+    listener.save
+    user.save
+  end
 
 #	def is_logged_in
 #		if self.controller_name == "music_rating_services" || self.controller_name == "accounts"
