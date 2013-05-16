@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514043319) do
+ActiveRecord::Schema.define(:version => 20130516133657) do
 
   create_table "listeners", :force => true do |t|
     t.integer  "user_id"
     t.integer  "merchant_id"
-    t.string   "account_id"
     t.float    "lat",         :default => 0.0, :null => false
     t.float    "lng",         :default => 0.0, :null => false
     t.datetime "created_at",                   :null => false
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20130514043319) do
     t.integer  "zip_code"
     t.integer  "current_song_id"
     t.integer  "previous_song_id"
-    t.integer  "account_id"
     t.float    "lat"
     t.float    "lng"
     t.integer  "owner_id",         :default => 1, :null => false

@@ -1,12 +1,14 @@
 <div class = "center_block" id="form_holder">
 	<h3>First, let's figure out where you are.</h3>  
-	<p>To start rating a song, get your GPS location below, and then move on to pick your store.</p>
-	<div class="box-button" id="getGeo">Get Location</div>
+	<p>To get a song, access your GPS location below, and then move on to pick your store.</p>
+	<div class="mini-box-button" id="getGeo">Get Location</div>
 	<div id = "storeLink">
 		<%= form_for @listener, :url => { :action => 'update'} do |f| %>
 			<%= f.hidden_field(:lng) %>
 			<%= f.hidden_field(:lat) %>
-			<%= submit_tag "Choose Store", :class => 'box-button', :name => 'location', :id => 'form-button'  %>
+			<div align = "center">
+				<%= submit_tag "Choose Store", :class => 'mini-box-button', :name => 'location'%>
+			</div>
 		<%end%>
 	</div>
 </div>

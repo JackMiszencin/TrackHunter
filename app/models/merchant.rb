@@ -29,6 +29,21 @@ class Merchant < ActiveRecord::Base
   def lat_low
   	return lat - (50 * deg_per_met)
   end
+  def format_zip
+  	zeroes = 0
+  	zip = self.zip_code
+  	line = zip.to_s
+  	if line.length < 5
+  		zeroes = 5 - line.length
+  		parts = Array.new
+  		zeroes.times { parts << "0" }
+  		addition = parts.join("")
+  		line = addition + line
+  	else
+  		line = line
+  	end
+  	return line
+  end
 
 
 #	def assign_loc(hash)

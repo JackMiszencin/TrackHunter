@@ -16,7 +16,10 @@
   	      <th><%= model_class.human_attribute_name(:city) %></th>  
           <th><%= model_class.human_attribute_name(:state) %></th>
           <th><%= model_class.human_attribute_name(:zip_code) %></th>
-          <th>Owner</th>
+          <%- if @current_user.is_admin? %>
+            <th>Owner</th>
+          <% else %>
+          <% end %>
           <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
       </thead>
@@ -33,14 +36,18 @@
               <td><%= merchant.address %></td>  
               <td><%= merchant.city %></td>
     	        <td><%= merchant.state %></td> 
-    	        <td><%= merchant.zip_code %></td> 
-              <td>
-                <% if merchant.owner == nil %>
-                  <%= " " %>
-                <% else %>
-                  <%= merchant.owner.username %>
-                <% end %>
-              </td>
+    	        <td><%= merchant.format_zip %></td> 
+              <%- if @current_user.is_admin? %>
+                <td>
+                  <% if merchant.owner == nil %>
+                    <%= " " %>
+                  <% else %>
+                    <%- owner = merchant.owner %>
+                    <%- name = [owner.first_name, owner.last_name].join(" ") %>
+                    <%= name %>
+                  <% end %>
+                </td>
+              <% end %>
               <td>
                 <%= link_to t('.edit', :default => "Edit Merchant"),
                           edit_merchant_path(merchant), :class => 'btn btn-mini' %>

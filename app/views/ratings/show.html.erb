@@ -1,5 +1,4 @@
 <div class="center_block">
-	<p id="notice"><%= notice %></p>
 	<% if @rating.like == true %>
 		<h2>GLAD YOU LIKED IT!</h2>
 		<p>We'll let the merchant know you liked the song, so hopefully they'll play more like it in the future. Meanwhile, here's the track info.</p>
@@ -13,7 +12,7 @@
 		<h4><%= "Album: " + @rating.song.album %></h4>
 	</div>
 	<div id="link_holder">
-	<%= link_to 'Change Rating', edit_rating_path(@rating) %> |
-	<%= link_to 'User Home', home_user_listener_path(@current_user) %>
+	<%= link_to 'Find Another Song', home_user_listener_path(@current_user) %> |
+	<%= link_to 'User Home',  user_root_path(@current_user) %>
 	</div>
 </div>

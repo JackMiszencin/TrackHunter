@@ -3,22 +3,12 @@ class ApplicationController < ActionController::Base
 	after_filter :get_loc, :only => :home
 	before_filter :is_current, :only => [:destroy, :index, :edit]
 	before_filter :merchant_guard, :only => [:edit, :destroy]
-#  before_filter :authenticate_user!, :except => [:new]
 	before_filter :is_logged_in, :except => [:new, :create]
 	before_filter :songs_filter
 	before_filter :rating_guard, :only => [:edit, :destroy]
   before_filter :create_listener, :only => :create
   after_filter :set_listener, :only => :create
-#  before_filter :set_current_listener, :only => :create
-  prepend_before_filter :set_current_user
-	protected
-#  def set_current_listener
-#    if self.controller_name == "sessions"
-#      user = User.find_for_authentication(:email => params[:user][:email])
-#      @current_listener = user.listener
-#    else
-#    end
-#  end
+
   def set_current_user
     if current_user == nil
       @current_user == User.find_for_authentication(:id => nil)
@@ -129,10 +119,6 @@ class ApplicationController < ActionController::Base
   		return
   	end
   end
-
-#def after_sign_in_path_for(resource)
-#  user_home_path(current_user)
-#end
 
   protect_from_forgery
 end

@@ -14,7 +14,7 @@ $(document).ready ->
       $("#listener_lng").val(position[1])
       $("#listener_lat").val(position[0])
       $("#storeLink").show()
-      $("#storeLink").prepend("<p><em>Location Received<em><p>")
+      $("#storeLink").prepend("<div class = 'simple-center' style = 'text-align: center;'><em>Location Received<em></div>")
 
     onError = (err) ->
       switch err.code

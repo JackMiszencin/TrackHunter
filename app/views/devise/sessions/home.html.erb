@@ -1,18 +1,7 @@
 <div class = "center_block">
 	<h2>Welcome, <%= @current_user.first_name + "!" %></h2>
-	<%= link_to "CLICK TO FIND A SONG", home_user_listener_path(@current_user), :class => "box-button" %>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h5><%= notice %><h5>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-
+	<br />
+	<div align = "center"><%= link_to "CLICK TO FIND A SONG", home_user_listener_path(@current_user), :class => "mini-box-button", :id => "single-in-box" %></div>
+	<br />
+	<br />
 </div>

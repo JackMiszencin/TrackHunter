@@ -3,6 +3,12 @@
 	<h2>New Merchant</h2>
 	<div id = "form_holder">
 		<%= render 'new_form' %>
+		<%- if notice != nil %>
+			<br />
+			<%= notice %>
+			<br />
+		<%- else %>
+		<%- end %>
 	</div>
 </div>
 
