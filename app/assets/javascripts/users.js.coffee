@@ -11,8 +11,8 @@ $(document).ready ->
     onSuccess = (pos) ->
       position[0] = pos.coords.latitude
       position[1] = pos.coords.longitude
-      $("#user_lng").val(position[1])
-      $("#user_lat").val(position[0])
+      $("#listener_lng").val(position[1])
+      $("#listener_lat").val(position[0])
       $("#storeLink").show()
       $("#storeLink").prepend("<p><em>Location Received<em><p>")
 

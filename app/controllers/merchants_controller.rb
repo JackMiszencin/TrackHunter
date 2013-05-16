@@ -9,6 +9,7 @@ class MerchantsController < ApplicationController
     elsif current_user.businesses != nil
       @merchants = current_user.businesses
     else
+      @merchants = []
     end
 
     respond_to do |format|

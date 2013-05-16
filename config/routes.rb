@@ -1,5 +1,13 @@
 TrackHunter::Application.routes.draw do
-  devise_for :users, :controllers => {:sessions => "devise/sessions"}
+  devise_for :users, :controllers => {:sessions => "devise/sessions"}, :path => 'accounts'
+
+  resources :users do
+    get :show
+    resource :listener do
+      get :home
+      get :merchant_selection
+    end
+  end
 
   resources :merchants
 
@@ -7,20 +15,13 @@ TrackHunter::Application.routes.draw do
 
   resources :ratings
 
-  resources :listeners do
-    get :home
-    get :merchant_selection
-  end
-
   devise_scope :user do
     get :show, :to => "devise/sessions#show"
+    get :home, :to => "devise/sessions#home"
+    match 'user_root', :to => 'devise/sessions#home'
   end
+  # YOU WERE GOING TO MATCH SOMETHING
   #match "user/home" => "Users#home", :method => "get"
-  
-  get "accounts/login"
-
-  get "accounts/logout"
-  post "accounts/login"  
   
   post "ratings/new"
   post "merchants/edit"

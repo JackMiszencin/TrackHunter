@@ -1,0 +1,51 @@
+<table class = "table table-striped">
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Album</th>
+      <th>Like/Dislike</th>
+      <th>User</th>
+      <th>Merchant</th>
+      <th>Date</th>
+      <% if @current_user.is_admin %>
+        <th>Actions</th>
+        <th></th>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+<% @ratings.each do |rating| %>
+  <tr>
+    <td><%= rating.song.artist %></td>
+    <td><%= rating.song.title %></td>
+    <td><%= rating.song.album %></td>
+    <td>
+      <% if rating.like == true %>
+        <%= "Like" %>
+      <% else %>
+        <%= "Dislike" %>
+      <% end %>
+    </td>
+    <td>
+      <% if rating.listener == nil %>
+        <%= " " %>
+      <% else %>
+        <%- listener = rating.listener %>
+        <%- user = listener.user %>
+        <%- name = user.first_name + " " + user.last_name %>
+        <%= name %>
+      <% end %>
+    </td>
+    <td><%= rating.merchant_name %></td>
+    <td><%= rating.created_at.strftime("%B %d, %Y") %></td>
+    <% if @current_user.is_admin %>
+      <td><%= link_to 'Show', rating %></td>
+      <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+      <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>  
+  </tr>
+<% end %>
+</table>
+
+<br />

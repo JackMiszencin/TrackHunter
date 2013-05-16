@@ -8,6 +8,9 @@
 	<br>
 	<%= link_to 'Login to Service', new_user_session_path, :class => "box-button", :id => "single-in-box"%>
 	<br>
+	<% if @current_user != nil %>
+		<h1><%= @current_user.id.to_s %></h1>
+	<% end %>
 	<br>
 	<br>
 	<h5><%= notice %></h5>

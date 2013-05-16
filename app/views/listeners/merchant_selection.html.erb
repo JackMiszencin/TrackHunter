@@ -1,11 +1,11 @@
 <div class="center_block" id ="form_holder">
 	<h2><%= "Where are you now?" %></h2>
-	<%= form_for(:user, :html => { :class => 'form-horizontal' }) do |f| %>   
+	<%= form_for(@listener, :url => { :action => 'update' }, :html => { :class => 'form-horizontal' }) do |f| %>   
 
 	<div class="control-group">
 		<div class="controls">
 
-	    <%= collection_select(:user, :merchant_id, @merchants, :id, :name, options={:prompt => "Select your current store"}, :class => "merchant")%>
+	    <%= collection_select(:listener, :merchant_id, @merchants, :id, :name, options={:prompt => "Select your current store"}, :class => "merchant")%>
 	 	</div>
 	 </div> 
 	 <div class = "button-holder">

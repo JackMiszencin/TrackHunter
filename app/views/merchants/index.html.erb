@@ -21,30 +21,37 @@
         </tr>
       </thead>
       <tbody>
-        <% @merchants.each do |merchant| %>
-          <tr>      
-            <td><%= merchant.name %></td>
-            <td><%= merchant.address %></td>  
-            <td><%= merchant.city %></td>
-  	        <td><%= merchant.state %></td> 
-  	        <td><%= merchant.zip_code %></td> 
-            <td>
-              <% if merchant.owner == nil %>
-                <%= " " %>
-              <% else %>
-                <%= merchant.owner.username %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to t('.edit', :default => "Edit Merchant"),
-                        edit_merchant_path(merchant), :class => 'btn btn-mini' %>
-              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        merchant_path(merchant),
-                          :method => :delete,
-                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => ' Are you sure?')) },
-                          :class => 'btn btn-mini btn-danger' %>
-            </td>
-          </tr>
+        <% if current_user.is_admin? && @merchants == [] %>
+          </tbody>
+          </table>
+          <p><em>IT SEEMS THAT THERE ARE NO MERCHANTS EXISTING IN THE DATABASE AT THIS TIME</em></p>
+          <br>
+        <% else %>
+          <% @merchants.each do |merchant| %>
+            <tr>      
+              <td><%= merchant.name %></td>
+              <td><%= merchant.address %></td>  
+              <td><%= merchant.city %></td>
+    	        <td><%= merchant.state %></td> 
+    	        <td><%= merchant.zip_code %></td> 
+              <td>
+                <% if merchant.owner == nil %>
+                  <%= " " %>
+                <% else %>
+                  <%= merchant.owner.username %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to t('.edit', :default => "Edit Merchant"),
+                          edit_merchant_path(merchant), :class => 'btn btn-mini' %>
+                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          merchant_path(merchant),
+                            :method => :delete,
+                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => ' Are you sure?')) },
+                            :class => 'btn btn-mini btn-danger' %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
@@ -55,11 +62,14 @@
     <%= notice %>
     <br>
     <% if @current_user.is_merchant %>
-      <%= "Hmm, seems like you don't have any businesses you're operating. You can create a new one " %>
-      <%= link_to "here", new_merchant_path %>
+      <h3>
+        <%= "Hmm, seems like you don't have any businesses you're operating." %>
+      </h3>
+        <%= link_to "Register a new business", new_merchant_path %>
     <% else %>
-      <%= "Seems like you're not a business owner. You can create a new merchant account to manage your businesses " %>
-      <%= link_to "here.", new_user_registration_path %>
+      <h3>
+        <%= "Seems like you're not a business owner. You can create a new merchant account to manage your businesses by logging out and creating a new account." %>
+      </h3>
     <% end %>
   <% end %>
 </div>

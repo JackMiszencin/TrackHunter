@@ -6,12 +6,6 @@
     </div>
   </div> 
   <div class="control-group">
-    <%= f.label :account_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :account_id, :class => 'text_field' %>
-    </div>
-  </div> 
-  <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :address, :class => 'text_field' %>
@@ -43,7 +37,7 @@
   </div>
  <div class="button-holder">
     <%= f.submit "Create Merchant", :class => 'mini-box-button' %>
-    <%= link_to "Return to User Home", user_home_path(@current_user), :class => 'mini-box-button' %>
+    <%= link_to "Return to User Home", home_user_listener_path(@current_user), :class => 'mini-box-button' %>
   </div>
 
 <% end %>
