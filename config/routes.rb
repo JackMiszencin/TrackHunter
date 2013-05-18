@@ -18,6 +18,7 @@ TrackHunter::Application.routes.draw do
   devise_scope :user do
     get :show, :to => "devise/sessions#show"
     get :home, :to => "devise/sessions#home"
+    get 'user', :to => "devise/sessions#home", :as => :user_root
     match 'user_root', :to => 'devise/sessions#home'
   end
   # YOU WERE GOING TO MATCH SOMETHING

@@ -43,7 +43,7 @@ class RatingsController < ApplicationController
   # GET /ratings/new.json
   def new
     @rating = Rating.new
-    @listener = @current_user.listener
+    @listener = current_user.listener
     @merchant = @listener.merchant
     @song = @merchant.current_song
 
