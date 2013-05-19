@@ -109,7 +109,24 @@ class ApplicationController < ActionController::Base
       end
     end
     if empty == true
-      flash[:notice] = "You cannot leave empty fields. The fields " + empty_fields.join(", ") + " were left blank."
+      (0..empty_fields.length - 3).each do |i|
+        empty_fields[i] << ","
+      end
+      empty_fields.insert(-2, "and") unless empty_fields.length < 2
+      field_list = empty_fields.join(" ")
+      message = "You cannot leave empty fields. The field" 
+      if empty_fields.length > 1
+        message << "s "
+      else
+        message << " "
+      end
+      message << field_list 
+      if empty_fields.length > 1
+        message << " were left blank."
+      else
+        message << " was left blank."
+      end
+      flash[:notice] = message
       redirect_to request.referrer
     else
       return
