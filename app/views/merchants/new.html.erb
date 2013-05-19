@@ -1,6 +1,9 @@
 <%- model_class = Merchant -%>
 <div class = "center_block">
 	<h2>New Merchant</h2>
+	<% if notice != nil %>
+		<h5><%= notice %></h5>
+	<% end %>
 	<div id = "form_holder">
 		<%= render 'new_form' %>
 		<%- if notice != nil %>

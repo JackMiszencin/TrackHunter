@@ -1,5 +1,8 @@
 <div class = "center_block">
   <h2>Sign up</h2>
+  <% if notice != nil %>
+    <h5><%= notice %></h5>
+  <% end %>
   <div id = "form_holder">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>

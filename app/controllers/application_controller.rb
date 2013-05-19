@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 	before_filter :rating_guard, :only => [:edit, :destroy]
   before_filter :create_listener, :only => :create
   after_filter :set_listener, :only => :create
+  before_filter :required_fields, :only => :create
 
 	def songs_filter
 		return unless self.controller_name == "songs"
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
   def set_listener
     return unless self.controller_name == "registrations"
     user = User.find_for_authentication(:email => params[:user][:email])
-    listener.user_id = user.id
+    @listener.user_id = user.id
     user.listener = @listener
     @listener.save
     user.save
@@ -89,6 +90,30 @@ class ApplicationController < ActionController::Base
   	else
   		return
   	end
+  end
+
+  def required_fields
+    if self.controller_name == "registrations"
+      param_name = "user"
+    elsif self.controller_name == "merchants"
+      param_name = "merchant"
+    else
+      return
+    end
+    empty_fields = Array.new
+    empty = false
+    params[param_name].each_pair do |k, v|
+      if v == ""
+        empty_fields << k.gsub("_", " ")
+        empty = true
+      end
+    end
+    if empty == true
+      flash[:notice] = "You cannot leave empty fields. The fields " + empty_fields.join(", ") + " were left blank."
+      redirect_to request.referrer
+    else
+      return
+    end
   end
 
   def after_sign_in_path_for(resource)

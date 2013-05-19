@@ -35,7 +35,7 @@
 	          <li><%= link_to "Merchants", merchants_path %></li>
 	          <li><%= link_to "Ratings", ratings_path %></li>
 	          <li>
-	          	<% if @current_user != nil %>
+	          	<% if current_user != nil %>
 	          		<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
 	          	<% else %>
 	          		<%= link_to "Login", new_user_session_path %>
