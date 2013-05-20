@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 	def is_logged_in
 		if self.controller_name == "music_rating_services" || self.controller_name == "registrations" || self.controller_name == "sessions"
 			return
-		elsif User.find_for_authentication(:id => current_user.id) == nil
+		elsif current_user == nil
 			flash[:notice] = "You must be logged in to access this feature."
 			redirect_to root_path
 		else

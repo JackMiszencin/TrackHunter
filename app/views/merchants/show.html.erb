@@ -16,7 +16,7 @@
   </dl>
 
   <div id="link_holder">
-    <%= link_to "User Home", home_user_listener_path(@current_user)  %>
+    <%= link_to "User Home", user_root_path(current_user)  %>
     <%="|"%>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
                 edit_merchant_path(@merchant) %>

@@ -1,6 +1,16 @@
-<h1>Editing merchant</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @merchant %> |
-<%= link_to 'Back', merchants_path %>
+<%- model_class = Merchant -%>
+<div class = "center_block">
+	<h2>Editing Merchant</h2>
+	<% if notice != nil %>
+		<h5><%= notice %></h5>
+	<% end %>
+	<div id = "form_holder">
+		<%= render 'form' %>
+		<%- if notice != nil %>
+			<br />
+			<%= notice %>
+			<br />
+		<%- else %>
+		<%- end %>
+	</div>
+</div>
