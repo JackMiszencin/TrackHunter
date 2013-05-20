@@ -4,21 +4,6 @@ info of a song playing there and then rate it so the shop owner can get a better
 idea of the music their patrons like. A full explanation is available on the 
 TrackHunter site, accessible here: link:trackhunter.herokuapp.com
 
-Temporary notice: After a recent upgrade of the login system to Devise, Heroku
-has been incredibly buggy and giving me ambiguous H10 errors telling me my app
-has crashed. I've tried everything from changing the server (from thin to 
-unicorn) to eliminating custom Devise controllers which present naming errors
-to upgrading potentially outdated gems. Nothing seems to be working, though.
-
-To use time more wisely, I'm waiting for a response to my Heroku bug report
-before I go down any more rabbit holes. Anyway, the site should be back up soon,
-and if you really want to see the app in action now, you're more than welcome
-to fork the repo and try it out on your own machine. (The app works fine on a
-local server). I'll let you know when the site is working again.
-
-Thanks,
-Jack
-
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
