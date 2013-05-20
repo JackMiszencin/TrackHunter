@@ -1,6 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+# Everything below is used to get the user's location and assign it to the listener object via HTML5. Most of the functions
+# below are standard, widely available functions created to access said information.
 urlholder = undefined
 position = new Array()
 #message = undefined

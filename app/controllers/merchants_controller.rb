@@ -1,8 +1,9 @@
 require "json"
 require "open-uri"
 class MerchantsController < ApplicationController
-  # GET /merchants
-  # GET /merchants.json
+
+  # Only shows businesses owned by a user, if they are amerchant. If the user is an admin, it shows all
+  # merchants in the database
   def index
     if current_user.is_admin
       @merchants = Merchant.all
@@ -18,8 +19,6 @@ class MerchantsController < ApplicationController
     end
   end
 
-  # GET /merchants/1
-  # GET /merchants/1.json
   def show
     @merchant = Merchant.find(params[:id])
 
@@ -29,8 +28,6 @@ class MerchantsController < ApplicationController
     end
   end
 
-  # GET /merchants/new
-  # GET /merchants/new.json
   def new
     @merchant = Merchant.new
     respond_to do |format|
@@ -39,13 +36,11 @@ class MerchantsController < ApplicationController
     end
   end
 
-  # GET /merchants/1/edit
   def edit
     @merchant = Merchant.find(params[:id])
   end
 
-  # POST /merchants
-  # POST /merchants.json
+  # Assigns latitude and longitude variables to the merchant using the provided address and the Google Maps Geocoding API
   def create
     @merchant = Merchant.new(params[:merchant])
     @merchant.owner_id = current_user.id
@@ -68,8 +63,6 @@ class MerchantsController < ApplicationController
     end
   end
 
-  # PUT /merchants/1
-  # PUT /merchants/1.json
   def update
     @merchant = Merchant.find(params[:id])
 
@@ -84,8 +77,6 @@ class MerchantsController < ApplicationController
     end
   end
 
-  # DELETE /merchants/1
-  # DELETE /merchants/1.json
   def destroy
     @merchant = Merchant.find(params[:id])
     @merchant.destroy

@@ -18,25 +18,16 @@ TrackHunter::Application.routes.draw do
   devise_scope :user do
     get :show, :to => "devise/sessions#show"
     get :home, :to => "devise/sessions#home"
+    # Used to help reroute from devise-generated login and sign up pages.
     get 'user', :to => "devise/sessions#home", :as => :user_root
     match 'user_root', :to => 'devise/sessions#home'
   end
-  # YOU WERE GOING TO MATCH SOMETHING
-  #match "user/home" => "Users#home", :method => "get"
   
   post "ratings/new"
   post "merchants/edit"
   root :to => "music_rating_services#index"
   
-  #match 'home' => 'Users#home' 
-
-  #resources :users
-  #root :to => "accounts#login"
-  #match 'home' => 'accounts#login', :as => 'accounts_login'
-
-  #post "ratings/new"   
-  
-   get "music_rating_services/index"
+  get "music_rating_services/index"
   
   
   

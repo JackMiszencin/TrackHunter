@@ -5,14 +5,17 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+  <!-- Below are just some links to help include some fonts that from google's free offerings. Otherwise they're not universally
+	compatible across browsers-->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
   <link href='http://fonts.googleapis.com/css?family=Medula+One' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 
-
+	<!-- The "container" and "row" class divs are there for the sake of keeping bootstrap working. It's really helped with 
+	doing some formatting jobs that are a bit mundane and don't add much to the site's feel. -->
 	<div class="container">   
 	 	<div class="row">
 		    <div class="span12"><%= yield %></div>

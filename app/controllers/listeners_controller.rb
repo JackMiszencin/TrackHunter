@@ -1,4 +1,6 @@
-class ListenersController < ApplicationController
+class ListenersController < ApplicationController # The listener serves as a place-holder to represent the user
+  # in matters of creating ratings, both to distinguish from the user's role as merchant and listener
+  # and to prevent issues encountered when altering devise's controllers.
 	def show
     @listener = Listener.find(params[:id])
     respond_to do |format|
@@ -9,8 +11,6 @@ class ListenersController < ApplicationController
 
   def new
     @listener = Listener.new
-    @listener.lng = 0
-    @listener.lat = 0
     @listener.save
 
     respond_to do |format|
@@ -19,14 +19,12 @@ class ListenersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
+  # THIS PAGE NOT YET CREATED/FUNCTIONAL
   def edit
     @listener = Listener.find(params[:id])   
     
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @listener = Listener.new(params[:listener])
     if request.post?
@@ -43,8 +41,8 @@ class ListenersController < ApplicationController
   end
 
 
-  # PUT /users/1
-  # PUT /users/1.json
+  # Works for three different methods. Each has a parameter embedded in its form that allows this controller to discern
+  # how to update the listener and where to redirect the user.
   def update
     @listener = @current_user.listener
     if params[:location]
@@ -76,8 +74,6 @@ class ListenersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @listener = Listener.find(params[:id])
     @listener.destroy
@@ -88,11 +84,13 @@ class ListenersController < ApplicationController
     end
   end  
   
+  # @merchants returns those merchants close to the user based on geolocation.
   def merchant_selection  
     @listener = @current_user.listener
     @merchants = Merchant.where(:lng => (@listener.lng_low)..(@listener.lng_up), :lat => (@listener.lat_low)..(@listener.lat_up))
   end
 
+  # This page is used as the stage for the user opting to have HTML5's geolocation feature give them their current location.
   def home
   	@listener = @current_user.listener
   	@listener.lng = params[:lng]

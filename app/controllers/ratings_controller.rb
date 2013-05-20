@@ -1,6 +1,7 @@
 class RatingsController < ApplicationController
-  # GET /ratings
-  # GET /ratings.json
+  # If the user is an admin, it shows all ratings in the database. If they are a business owner, it shows both
+  # their ratings as a listener and the ratings their businesses have received. If neither is the case, it just
+  # shows the ratings the user has made as a listener. Part of this is played out in the view.
   def index
     if @current_user.is_admin
       @ratings = Array.new
@@ -28,8 +29,6 @@ class RatingsController < ApplicationController
     end
   end
 
-  # GET /ratings/1
-  # GET /ratings/1.json
   def show
     @rating = Rating.find(params[:id])
 
@@ -39,8 +38,8 @@ class RatingsController < ApplicationController
     end
   end
 
-  # GET /ratings/new
-  # GET /ratings/new.json
+  # This page is the one after a location and current_merchant have been discerned (see listeners controller),
+  # where the user selects a simple like/dislike attribute for a rating.
   def new
     @rating = Rating.new
     @listener = current_user.listener
@@ -59,13 +58,11 @@ class RatingsController < ApplicationController
     end
   end
 
-  # GET /ratings/1/edit
+  # THIS VIEW NOT YET CREATED
   def edit
     @rating = Rating.find(params[:id])
   end
 
-  # POST /ratings
-  # POST /ratings.json
   def create
     @rating = Rating.new(params[:rating])
 
@@ -80,8 +77,6 @@ class RatingsController < ApplicationController
     end
   end
 
-  # PUT /ratings/1
-  # PUT /ratings/1.json
   def update
     @rating = Rating.find(params[:id])
 
@@ -96,8 +91,6 @@ class RatingsController < ApplicationController
     end
   end
 
-  # DELETE /ratings/1
-  # DELETE /ratings/1.json
   def destroy
     @rating = Rating.find(params[:id])
     @rating.destroy
