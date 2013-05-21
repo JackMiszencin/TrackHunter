@@ -15,7 +15,7 @@
           <th><%= model_class.human_attribute_name(:address) %></th> 
   	      <th><%= model_class.human_attribute_name(:city) %></th>  
           <th><%= model_class.human_attribute_name(:state) %></th>
-          <th><%= model_class.human_attribute_name(:zip_code) %></th>
+          <th><%= model_class.human_attribute_name(:zip) %></th>
           <%- if @current_user.is_admin? %>
             <th>Owner</th>
           <% else %>
@@ -36,7 +36,7 @@
               <td><%= merchant.address %></td>  
               <td><%= merchant.city %></td>
     	        <td><%= merchant.state %></td> 
-    	        <td><%= merchant.format_zip %></td> 
+    	        <td><%= merchant.zip %></td> 
               <%- if @current_user.is_admin? %>
                 <td>
                   <% if merchant.owner == nil %>

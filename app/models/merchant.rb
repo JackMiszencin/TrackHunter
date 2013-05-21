@@ -1,5 +1,5 @@
 class Merchant < ActiveRecord::Base
-	attr_accessible :name, :address, :city, :state, :zip_code, :account_id, :current_song_id,  :previous_song_id, :previous_song, :current_song
+	attr_accessible :name, :address, :city, :state, :zip, :account_id, :current_song_id,  :previous_song_id, :previous_song, :current_song
 	has_many :ratings, :foreign_key => "merchant_id", :inverse_of => :merchant, :dependent => :destroy
 	# The following indicate which song is currently playing in an establishment and what was being played before the current.
   belongs_to :previous_song, :class_name => "Song", :inverse_of => :previous_merchants
@@ -10,7 +10,7 @@ class Merchant < ActiveRecord::Base
 	belongs_to :owner_rating, :class_name => "Rating", :dependent => :destroy
 
 	def make_address
-		full_address = [address.gsub(" ", "+"), city, state, zip_code.to_s]
+		full_address = [address.gsub(" ", "+"), city, state, zip]
 		return full_address.join("+")
 	end
 
@@ -23,23 +23,5 @@ class Merchant < ActiveRecord::Base
 		return 360 / (rprime*2*Math::PI) # Takes this radius and uses it to get the cross-sectional circumference at that point in meters
     # and return 360 degrees by this circumferences to get degrees per meter.
 	end
-
-
-  # This used to counteract the fact that the int class drops un-necessary zeroes at the beginning of a number.
-  def format_zip
-  	zeroes = 0
-  	zip = self.zip_code
-  	line = zip.to_s
-  	if line.length < 5
-  		zeroes = 5 - line.length
-  		parts = Array.new
-  		zeroes.times { parts << "0" }
-  		addition = parts.join("")
-  		line = addition + line
-  	else
-  		line = line
-  	end
-  	return line
-  end
 
 end

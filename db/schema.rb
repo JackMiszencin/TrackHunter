@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519041950) do
+ActiveRecord::Schema.define(:version => 20130521025812) do
 
   create_table "listeners", :force => true do |t|
     t.integer  "user_id"
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(:version => 20130519041950) do
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip_code"
     t.integer  "current_song_id"
     t.integer  "previous_song_id"
     t.float    "lat"
     t.float    "lng"
     t.integer  "owner_id",         :default => 1, :null => false
+    t.string   "zip"
   end
 
   add_index "merchants", ["current_song_id"], :name => "index_merchants_on_current_song_id"
@@ -97,12 +97,8 @@ ActiveRecord::Schema.define(:version => 20130519041950) do
     t.datetime "updated_at",                                :null => false
     t.string   "first_name",                                :null => false
     t.string   "last_name",                                 :null => false
-    t.string   "username"
-    t.float    "lat"
-    t.float    "lng"
     t.boolean  "is_merchant",            :default => false, :null => false
     t.boolean  "is_admin",               :default => false, :null => false
-    t.integer  "merchant_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
