@@ -5,14 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 thai_hut: 
-	id: 1
-	address: "93 Beacon Street"
-	city: "Somerville"
-	state: "MA"
-	zip_code: "02143"
+  id: 1
+  address: "93 Beacon Street"
+  city: "Somerville"
+  state: "MA"
+  zip: "02143"
 crema:
-	address: "27 Brattle Street"
-	city: Cambridge
-	state: "MA"
-	zip: "02138"
-#  column: value
+  address: "27 Brattle Street"
+  city: Cambridge
+  state: "MA"
+  zip: "02138"
