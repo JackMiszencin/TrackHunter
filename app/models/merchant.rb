@@ -1,4 +1,6 @@
 class Merchant < ActiveRecord::Base
+	require "json"
+	require "open-uri"
 	attr_accessible :name, :address, :city, :state, :zip, :account_id, :current_song_id,  :previous_song_id, :previous_song, :current_song
 	has_many :ratings, :foreign_key => "merchant_id", :inverse_of => :merchant, :dependent => :destroy
 	# The following indicate which song is currently playing in an establishment and what was being played before the current.
@@ -12,6 +14,14 @@ class Merchant < ActiveRecord::Base
 	def make_address
 		full_address = [address.gsub(" ", "+"), city, state, zip]
 		return full_address.join("+")
+	end
+	def get_coor
+    uri = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=" + make_address + "&sensor=true").open.read
+    urihash = JSON.parse(uri)
+    coor = urihash["results"][0]["geometry"]["location"]
+    self.lat = coor["lat"]
+    self.lng = coor["lng"]
+    self.save
 	end
 
   # This method calculates an estimate of the number of meters in a longitudinal or latitudinal degree based on "r", or the

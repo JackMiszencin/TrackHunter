@@ -44,13 +44,7 @@ class MerchantsController < ApplicationController
   def create
     @merchant = Merchant.new(params[:merchant])
     @merchant.owner_id = current_user.id
-    current_user.businesses << @merchant
-    uri = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=" + @merchant.make_address + "&sensor=true").open.read
-    urihash = JSON.parse(uri)
-    coor = urihash["results"][0]["geometry"]["location"]
-    @merchant.lat = coor["lat"]
-    @merchant.lng = coor["lng"]
-    @merchant.save
+    @merchant.get_coor # References method to pull coordinates from Google Maps Geocoding API
 
     respond_to do |format|
       if @merchant.save
@@ -65,12 +59,7 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    uri = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=" + @merchant.make_address + "&sensor=true").open.read
-    urihash = JSON.parse(uri)
-    coor = urihash["results"][0]["geometry"]["location"]
-    @merchant.lat = coor["lat"]
-    @merchant.lng = coor["lng"]
-    @merchant.save
+    @merchant.get_coor # References method to pull coordinates from Google Maps Geocoding API.
 
     respond_to do |format|
       if @merchant.update_attributes(params[:merchant])
