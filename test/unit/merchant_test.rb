@@ -25,5 +25,9 @@ class MerchantTest < ActiveSupport::TestCase
 	def test_checks_format_of_state
 		assert_string_attribute_checks_format(@m, :state, "AAAAAAbbbbb312")
 	end
-	
+	def test_get_coor_returns_error_message_on_bad_address
+		@m.address = "asdl;fkjal;sdkjf;laksjdf"
+		assert_kind_of(String, @m.get_coor, "get_coor returns no error on bad address.")
+	end
+
 end

@@ -18,10 +18,15 @@ class Merchant < ActiveRecord::Base
 	def get_coor
     uri = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=" + make_address + "&sensor=true").open.read
     urihash = JSON.parse(uri)
-    coor = urihash["results"][0]["geometry"]["location"]
-    self.lat = coor["lat"]
-    self.lng = coor["lng"]
-    self.save
+    if urihash["status"] == "ZERO_RESULTS"
+    	return "You've given a bad address for your business. Please fix this so people can find it."
+    else
+	    coor = urihash["results"][0]["geometry"]["location"]
+	    self.lat = coor["lat"]
+	    self.lng = coor["lng"]
+	    self.save
+	    return nil
+	  end
 	end
 
   # This method calculates an estimate of the number of meters in a longitudinal or latitudinal degree based on "r", or the
